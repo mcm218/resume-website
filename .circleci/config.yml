@@ -5,7 +5,7 @@ jobs:
   CICD:
     working_directory: ~/resume-website
     docker:
-        - image: circleci/node:10-browsers
+        - image: cimg/node:16.13.2
     steps:
         # Checkout the code from the branch into the working_directory
         - checkout
