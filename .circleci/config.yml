@@ -49,3 +49,11 @@ jobs:
                 sudo apt-get -qq install git-ftp
                 echo "Deploying site..."
                 git ftp push --user "${username}" --passwd "${password}" ${ftp_location}/resume
+workflows:
+  version: 2
+  master-deploy:
+    jobs:
+      - CICD:
+          filters:
+            branches:
+              only: master
