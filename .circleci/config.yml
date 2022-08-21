@@ -42,6 +42,8 @@ jobs:
 
   deploy:
     working_directory: ~/resume-website
+    docker:
+        - image: circleci/node:10-browsers
     steps:
       - checkout
       - run:
@@ -51,12 +53,3 @@ jobs:
           sudo apt-get -qq install git-ftp
           echo "Deploying site..."
           git ftp push --user "${username}" --passwd "${password}" ${ftp_location}/resume
-
-workflows:
-  version: 2
-  master-deploy:
-    jobs:
-      - deploy:
-          filters:
-            branches:
-              only: master
