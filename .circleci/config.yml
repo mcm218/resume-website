@@ -1,12 +1,19 @@
 version: 2.1
 orbs:
-  browser-tools: circleci/browser-tools@1.2.3
+  browser-tools: circleci/browser-tools@1.4.0
 jobs:
   CICD:
     working_directory: ~/resume-website
     docker:
-        - image: cimg/node:16.13.2
+        - image: cimg/node:16.13.2-browsers
     steps:
+        - browser-tools/install-chrome
+        - browser-tools/install-chromedriver      
+        - run:
+            name: Check browser install
+            command: |
+              google-chrome --version
+              chromedriver --version
         # Checkout the code from the branch into the working_directory
         - checkout
         # Log the current branch
