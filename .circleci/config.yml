@@ -59,7 +59,7 @@ jobs:
                 echo "Checking for changes..."
                 git status -uno --porcelain
                 echo "Dropping changes & deploying site..."
-                git reset -hard 
+                git reset --hard 
                 git ftp push --user "${username}" --passwd "${password}" ${ftp_location}/resume
 workflows:
   version: 2
