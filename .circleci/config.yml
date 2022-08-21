@@ -52,12 +52,14 @@ jobs:
         #         npm run build
         - run:
             name: Deploy
+            # ToDo: find better way of dealing with changes to package-lock.json, currently just dropping the changes...
             command: |
                 sudo apt-get update
                 sudo apt-get -qq install git-ftp
                 echo "Checking for changes..."
                 git status -uno --porcelain
-                echo "Deploying site..."
+                echo "Dropping changes & deploying site..."
+                git reset -hard 
                 git ftp push --user "${username}" --passwd "${password}" ${ftp_location}/resume
 workflows:
   version: 2
