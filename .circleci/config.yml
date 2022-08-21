@@ -48,13 +48,20 @@ jobs:
         #     command: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
         - run:
             name: Build
-            command: npm run build
+            command: |
+                git config credential.helper 'cache --timeout=120'
+                git config user.email "bot@michaelcmuniz.com"
+                git config user.name "Deployment Bot"
+                npm run build
+                git commit --allow-empty -m "Trigger deployment"
+                git push -q https://${GITHUB_PERSONAL_TOKEN}@github.com/mcm218/resume-website.git master
         - run:
             name: Deploy
             command: |
                 sudo apt-get update
                 sudo apt-get -qq install git-ftp
                 echo "Deploying site..."
+                git status -uno --porcelain
                 git ftp push --user "${username}" --passwd "${password}" ${ftp_location}/resume
 workflows:
   version: 2
