@@ -1,1 +1,9 @@
-<p>{{ this.item.description }}</p>
+<h2>{{ this.item.role }}</h2>
+<p>{{ this.item.company }}</p>
+<div>
+    <span>{{ this.item.startDate }} - {{ this.item.endDate }} </span>
+    <span style="float: right;">{{ this.item.location }}</span>
+</div>
+<ul>
+    <li *ngFor="let description of this.item.notes">{{ description }}</li>
+</ul>

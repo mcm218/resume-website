@@ -8,7 +8,7 @@ import { ExperienceItem } from '../models/experience-item';
 })
 export class ExperienceCardComponent implements OnInit {
 
-  @Input () item: ExperienceItem = new ExperienceItem ("");
+  @Input () item: ExperienceItem = new ExperienceItem ();
 
   constructor() { }
 

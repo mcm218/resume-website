@@ -1,38 +1,72 @@
 {
 	"experience": [
 	  {
-		"role": "Senior Software Engineer",
-		"company": "Persistent Systems",
-		"location": "Charlotte, NC",
-		"startDate": "January 2022",
-		"endDate": "August 2022",
-		"experienceItems": [
+		"title": "Professional Experience",
+		"experience": [
 		  {
-			"description": "Description 1"
-		  },
-		  {
-			"description": "Description 2"
-		  },
-		  {
-			"description": "Description 3"
+			"role": "Senior Software Engineer",
+			"company": "Persistent Systems",
+			"location": "Charlotte, NC",
+			"startDate": "January 2020",
+			"endDate": "August 2022",
+			"notes": [
+			  "Using Salesforce, worked with a client to create a developer portal allowing customers to learn and test the client's APIs",
+			  "Helped coordinate the transition towards a global sign-in experience across a client's existing portals",
+			  "Lead the Android development for a client's Xamarin mobile app and released the app to both iOS and Android platforms within 6 months",
+			  "Supervised and taught Xamarin and C# to interns throughout their onboarding process",
+			  "Coordinated with testers to resolve defects for apps, closing 100+ issues",
+			  "Responded to user reviews and bug reports, boosting individual ratings by 3.6 stars on average",
+			  "Built an in-house desktop app, using JS and Electron, for processing ICRE files improving developers efficiency"
+			]
 		  }
 		]
 	  },
 	  {
-		"role": "Senior Software Engineer",
-		"company": "Persistent Systems",
-		"location": "Charlotte, NC",
-		"startDate": "January 2022",
-		"endDate": "August 2022",
-		"experienceItems": [
+		"title": "Personal Projects",
+		"experience": [
 		  {
-			"description": "Description 1"
+			"role": "Discord Music Bot",
+			"company": "",
+			"location": "",
+			"startDate": "",
+			"endDate": "",
+			"notes": [
+			  "Developed a bot that utilized Discord's APIs to allow users to play music from YouTube within the server's voice channels via text commands",
+			  "Designed web client to allow for easier manipulation of a Discord server's music queue and watch synced music videos in groups"
+			]
 		  },
 		  {
-			"description": "Description 2"
+			"role": "Journaling Mobile App",
+			"company": "",
+			"location": "",
+			"startDate": "May 2018",
+			"endDate": "November 2019",
+			"notes": [
+			  "Designed UI and systems to allow users to create new entries based on prompts or create reflections based on previous entries",
+			  "Developed the app using Flutter and launched for both iOS and Android",
+			  "Utilized Firebase to handle user authentication and data"
+			]
 		  },
 		  {
-			"description": "Description 3"
+			"role": "Computer Vision System for Automated Nerf Toy",
+			"company": "Clemson University",
+			"location": "",
+			"startDate": "",
+			"endDate": "",
+			"notes": [
+			  "Built the computer vision system using C++ and OpenCV for an automated nerf gun which allowed it to track and fire at moving targets using multiple fire modes"
+			]
+		  },
+		  {
+			"role": "Automated Chess Robot",
+			"company": "Clemson University",
+			"location": "",
+			"startDate": "",
+			"endDate": "",
+			"notes": [
+			  "Lead the development of the computer vision system for recognizing the chess pieces and the board",
+			  "Worked with one developer to design the system for controlling the motors used to move the grabber, similar to systems used in 3D printers"
+			]
 		  }
 		]
 	  }

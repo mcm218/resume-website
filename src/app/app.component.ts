@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import JsonData from '../assets/me.json';
+import { Role } from './models/role';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +9,5 @@ import JsonData from '../assets/me.json';
 })
 export class AppComponent {
   title = 'Resume';
-  experienceList: Array <any> = JsonData.experience;
+  experienceList: Array <Role> = JsonData.experience;
 }
