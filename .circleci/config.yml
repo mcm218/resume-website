@@ -60,7 +60,7 @@ jobs:
                 git status -uno --porcelain
                 echo "Dropping changes & deploying site..."
                 git reset --hard 
-                git ftp init --user "${username}" --passwd "${password}" ${ftp_location}/resume
+                git ftp init --user "${username}" --passwd "${password}" ${ftp_location}
 workflows:
   version: 2
   master-deploy:
