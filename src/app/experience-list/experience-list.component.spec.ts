@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExperienceBlockComponent } from './experience-block.component';
+import { ExperienceListComponent } from './experience-list.component';
 
-describe('ExperienceBlockComponent', () => {
-  let component: ExperienceBlockComponent;
-  let fixture: ComponentFixture<ExperienceBlockComponent>;
+describe('ExperienceListComponent', () => {
+  let component: ExperienceListComponent;
+  let fixture: ComponentFixture<ExperienceListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExperienceBlockComponent ]
+      declarations: [ ExperienceListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExperienceBlockComponent);
+    fixture = TestBed.createComponent(ExperienceListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ContactComponent } from './contact/contact.component';
 import { SkillsListComponent } from './skills-list/skills-list.component';
-import { ExperienceBlockComponent } from './experience-block/experience-block.component';
+import { ExperienceListComponent } from './experience-list/experience-list.component';
+import { ExperienceCardComponent } from './experience-card/experience-card.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ExperienceBlockComponent } from './experience-block/experience-block.co
     HeaderComponent,
     ContactComponent,
     SkillsListComponent,
-    ExperienceBlockComponent
+    ExperienceListComponent,
+    ExperienceCardComponent
   ],
   imports: [
     BrowserModule,
