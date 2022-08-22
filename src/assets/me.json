@@ -1,0 +1,40 @@
+{
+	"experience": [
+	  {
+		"role": "Senior Software Engineer",
+		"company": "Persistent Systems",
+		"location": "Charlotte, NC",
+		"startDate": "January 2022",
+		"endDate": "August 2022",
+		"experienceItems": [
+		  {
+			"description": "Description 1"
+		  },
+		  {
+			"description": "Description 2"
+		  },
+		  {
+			"description": "Description 3"
+		  }
+		]
+	  },
+	  {
+		"role": "Senior Software Engineer",
+		"company": "Persistent Systems",
+		"location": "Charlotte, NC",
+		"startDate": "January 2022",
+		"endDate": "August 2022",
+		"experienceItems": [
+		  {
+			"description": "Description 1"
+		  },
+		  {
+			"description": "Description 2"
+		  },
+		  {
+			"description": "Description 3"
+		  }
+		]
+	  }
+	]
+  }

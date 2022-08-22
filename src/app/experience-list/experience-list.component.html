@@ -1,15 +1,13 @@
-<section>
-    <h2>List of Experience</h2>
+<section class="experience-list">
+    <h2>{{ role }}</h2>
+    <p>{{ company }}</p>
+    <div>
+        <span>{{ startDate }} - {{ endDate }}</span>
+        <span class="location">{{ locationName }}</span>
+    </div>
     <ul>
-        <li>
-            <article>
-                Project 1
-            </article>
-        </li>
-        <li>
-            <article>
-                Project 2
-            </article>
+        <li *ngFor="let item of experienceItems">
+            <app-experience-card [item]="item"></app-experience-card>
         </li>
     </ul>
 </section>

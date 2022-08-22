@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import JsonData from '../assets/me.json';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Resume';
+  experienceList: Array <any> = JsonData.experience;
 }

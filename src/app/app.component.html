@@ -6,8 +6,14 @@
             <app-skills-list></app-skills-list>
         </aside>
         <section>
-            <app-experience-list></app-experience-list>
-            <app-experience-list></app-experience-list>
+            <ul>
+                <li *ngFor="let item of this.experienceList">
+                    <app-experience-list
+                        [role]="item.role"
+                    >
+                    </app-experience-list>
+                </li>
+            </ul>
         </section>
     </main>
 </div>
