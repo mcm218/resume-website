@@ -1,0 +1,21 @@
+.header {
+    background-color: lightblue;
+}
+
+.body {
+    display: flex;
+    flex-direction: row;
+    background-color: lightgray;
+    aside {
+        background-color: grey;
+        flex-shrink: 2;
+        min-width: 200px;
+        max-width: 400px;
+    }
+    main {
+        background-color: black;
+        color: white;
+        flex-grow: 2;
+        width: 70%;
+    }
+}
