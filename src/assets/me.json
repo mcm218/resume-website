@@ -1,4 +1,106 @@
 {
+	"education" : {
+		"degree": "B.S. in Computer Engineering",
+		"university": "Clemson University",
+		"endDate": "December 2019"
+	},
+	"contact" : {
+		"name": "Michael Muniz",
+		"title": "Software Engineer",
+		"email": "mcmuniz218@gmail.com",
+		"phone": "8038340866",
+		"location": "Charlotte, NC",
+		"linkedin": "",
+		"github": ""
+	},
+	"skills": [
+		{ 
+			"title": "Languages",
+			"skills": 
+			[
+				{ 
+					"title": "Typescript",
+					"skill": 8
+				},
+				{ 
+					"title": "Javascript",
+					"skill": 7
+				},
+				{ 
+					"title": "HTML5",
+					"skill": 8
+				},
+				{ 
+					"title": "CSS",
+					"skill": 8
+				},
+				{ 
+					"title": "C#",
+					"skill": 7
+				},
+				{ 
+					"title": "Aura",
+					"skill": 6
+				},
+				{ 
+					"title": "Apex",
+					"skill": 5
+				}
+			]
+		},
+		{ 
+			"title": "Frameworks",
+			"skills": 
+			[
+				{ 
+					"title": "Xamarin",
+					"skill": 5
+				},
+				{ 
+					"title": "Salesforce Lightning",
+					"skill": 8
+				},
+				{ 
+					"title": "Angular",
+					"skill": 6
+				},
+				{ 
+					"title": "React",
+					"skill": 3
+				},
+				{ 
+					"title": "Node.js",
+					"skill": 3
+				}
+			]
+		},
+		{ 
+			"title": "Other",
+			"skills": 
+			[
+				{ 
+					"title": "Git",
+					"skill": 7
+				},
+				{ 
+					"title": "Agile",
+					"skill": 7
+				},
+				{ 
+					"title": "Scrum",
+					"skill": 7
+				},
+				{ 
+					"title": "Organization",
+					"skill": 9
+				},
+				{ 
+					"title": "Communication",
+					"skill": 7
+				}
+			]
+		}
+	],
 	"experience": [
 	  {
 		"title": "Professional Experience",

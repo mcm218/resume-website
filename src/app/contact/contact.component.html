@@ -1,1 +1,7 @@
-<p>contact info</p>
+<section class="contact-info">
+    <!-- <h2>{{ contact.name }}</h2> -->
+    <a [href]="'mailto:' + contact.email">{{ contact.email }}</a>
+    <p>{{ contact.phone }}</p>
+    <a [href]="contact.linkedin">LinkedIn</a>
+    <a [href]="contact.github">GitHub</a>
+</section>

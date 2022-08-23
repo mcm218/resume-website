@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ContactMe } from '../models/contact-me';
 
 @Component({
   selector: 'app-contact',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
+  @Input () contact: ContactMe = new ContactMe ();
+  
   constructor() { }
 
   ngOnInit() {

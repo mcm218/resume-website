@@ -1,6 +1,8 @@
-<h2>
-    Skills
-</h2>
-<ul>
-    <li *ngFor="let skill of skills"><app-skill-card [title]="skill.title" [skill]="skill.skill"></app-skill-card></li>
-</ul>
+<section>
+    <h2>
+        {{ title }}
+    </h2>
+    <ul>
+        <li *ngFor="let skill of skills"><app-skill-card [title]="skill.title" [skill]="skill.skill"></app-skill-card></li>
+    </ul>
+</section>

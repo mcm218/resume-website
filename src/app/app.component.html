@@ -1,9 +1,14 @@
 <div id="primary-column">
-    <app-header></app-header>
+    <app-header [title]="contact.name" [subtitle]="contact.title"></app-header>
     <main>
         <aside>
-            <app-contact></app-contact>
-            <app-skills-list></app-skills-list>
+            <app-contact [contact]="contact"></app-contact>
+            <app-education-card [education]="education"></app-education-card>
+            <ul>
+                <li *ngFor="let skills of skillsLists">
+                    <app-skills-list [title]="skills.title" [skills]="skills.skills"></app-skills-list>
+                </li>
+            </ul>
         </aside>
         <section>
             <ul>
@@ -11,6 +16,7 @@
                     <app-experience-list
                         [role]="item"
                     >
+
                     </app-experience-list>
                 </li>
             </ul>
