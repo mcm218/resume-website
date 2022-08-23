@@ -2,7 +2,14 @@ version: 2.1
 orbs:
   browser-tools: circleci/browser-tools@1.4.0
 jobs:
-  CICD:
+  # TODO: Add actual build step
+  Build:
+    working_directory: ~/resume-website
+    docker:
+        - image: cimg/node:16.13.2-browsers
+    steps:
+      - checkout
+  Test:
     working_directory: ~/resume-website
     docker:
         - image: cimg/node:16.13.2-browsers
@@ -50,6 +57,13 @@ jobs:
         #     name: Build
         #     command: |
         #         npm run build
+        
+  Deploy:
+    working_directory: ~/resume-website
+    machine:
+        image: ubuntu-2004:202010-01
+    steps:
+        - checkout
         - run:
             name: Deploy
             # ToDo: find better way of dealing with changes to package-lock.json, currently just dropping the changes...
@@ -62,10 +76,21 @@ jobs:
                 git reset --hard 
                 git ftp push --user "${username}" --passwd "${password}" ${ftp_location}
 workflows:
-  version: 2
   master-deploy:
     jobs:
-      - CICD:
+      - Build:
+          filters:
+            branches:
+              only: master
+      - Test:
+          requires:
+            - Build
+          filters:
+            branches:
+              only: master
+      - Deploy:
+          requires:
+            - Test
           filters:
             branches:
               only: master
