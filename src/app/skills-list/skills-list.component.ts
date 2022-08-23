@@ -1,19 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-skills-list',
   templateUrl: './skills-list.component.html',
   styleUrls: ['./skills-list.component.scss']
 })
-export class SkillsListComponent implements OnInit {
+export class SkillsListComponent {
 
   @Input () title: string = "";
   @Input () skills: Array<any> = new Array <any> ();
   
   constructor() { }
-
-  ngOnInit() {
-
-  }
-
 }
