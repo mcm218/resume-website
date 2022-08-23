@@ -1,9 +1,12 @@
-<h3>{{ this.item.role }}</h3>
-<h4>{{ this.item.company }}</h4>
-<div>
-    <span *ngIf="this.item.startDate !== ''">{{ this.item.startDate }} - {{ this.item.endDate }} </span>
-    <span style="float: right;">{{ this.item.location }}</span>
-</div>
-<ul>
-    <li *ngFor="let description of this.item.notes">{{ description }}</li>
-</ul>
+<section class="experience-card">
+    <h3>{{ this.item.role }}</h3>
+    <h4>{{ this.item.company }}</h4>
+    <div>
+        <span *ngIf="this.item.startDate !== ''">{{ this.item.startDate }} - {{ this.item.endDate }} </span>
+        <span style="float: right;">{{ this.item.location }}</span>
+    </div>
+    <ul>
+        <li *ngFor="let description of this.item.notes">{{ description }}</li>
+    </ul>
+</section>
+

@@ -1,16 +1,9 @@
 <div id="primary-column">
-    <app-header [title]="contact.name" [subtitle]="contact.title"></app-header>
     <main>
-        <aside>
-            <app-contact [contact]="contact"></app-contact>
-            <app-education-card [education]="education"></app-education-card>
-            <ul>
-                <li *ngFor="let skills of skillsLists">
-                    <app-skills-list [title]="skills.title" [skills]="skills.skills"></app-skills-list>
-                </li>
-            </ul>
-        </aside>
-        <section>
+        <section class="main-header">
+            <app-header [title]="contact.name" [subtitle]="contact.title"></app-header>
+        </section>
+        <section class="main-experience">
             <ul>
                 <li *ngFor="let item of this.experienceList">
                     <app-experience-list
@@ -21,6 +14,15 @@
                 </li>
             </ul>
         </section>
+        <aside class="main-sidebar">
+            <app-contact [contact]="contact"></app-contact>
+            <app-education-card [education]="education"></app-education-card>
+            <ul>
+                <li *ngFor="let skills of skillsLists">
+                    <app-skills-list [title]="skills.title" [skills]="skills.skills"></app-skills-list>
+                </li>
+            </ul>
+        </aside>
     </main>
 </div>
 <router-outlet></router-outlet>

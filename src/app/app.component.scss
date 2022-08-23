@@ -1,22 +1,62 @@
 #primary-column {
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
+
+    --purple: #9B5DE5;
+    --pink: #F15BB5;
+    --yellow: #FEE440;
+    --blue: #00BBF9;
+    --green: #00F5D4;
+
+    --card-radius: 5px;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 main {
+    height: 100%;
     flex-grow: 2;
     display: flex;
     flex-direction: row;
-    background-color: lightgray;
-    aside {
-        background-color: grey;
-        flex-shrink: 2;
-        min-width: 200px;
-        max-width: 400px;
+    background-color: var(--purple);
+    overflow: hidden;
+    .main-header {
+        max-width: 30%;
     }
-    section {
+    .main-sidebar {
+        background-color: var(--green);
+        flex-shrink: 2;
+        min-width: 250px;
+        border-radius: 15px;
+        margin: 16px;
+        height: calc(100vh - 32px);
+    }
+    .main-header, .main-experience {
         flex-grow: 2;
         width: 70%;
+        padding: 16px;
+        height: calc(100vh - 32px);
     }
+}
+
+// Scrollbar
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
