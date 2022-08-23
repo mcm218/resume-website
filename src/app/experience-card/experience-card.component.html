@@ -1,7 +1,7 @@
-<h2>{{ this.item.role }}</h2>
-<p>{{ this.item.company }}</p>
+<h3>{{ this.item.role }}</h3>
+<h4>{{ this.item.company }}</h4>
 <div>
-    <span>{{ this.item.startDate }} - {{ this.item.endDate }} </span>
+    <span *ngIf="this.item.startDate != ''">{{ this.item.startDate }} - {{ this.item.endDate }} </span>
     <span style="float: right;">{{ this.item.location }}</span>
 </div>
 <ul>

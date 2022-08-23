@@ -1,7 +1,7 @@
 <section class="contact-info">
     <!-- <h2>{{ contact.name }}</h2> -->
     <a [href]="'mailto:' + contact.email">{{ contact.email }}</a>
-    <p>{{ contact.phone }}</p>
+    <p>{{ contact.phone | phonePipe }}</p>
     <a [href]="contact.linkedin">LinkedIn</a>
     <a [href]="contact.github">GitHub</a>
 </section>

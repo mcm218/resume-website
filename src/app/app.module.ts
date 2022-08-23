@@ -10,6 +10,7 @@ import { ExperienceListComponent } from './experience-list/experience-list.compo
 import { ExperienceCardComponent } from './experience-card/experience-card.component';
 import { SkillCardComponent } from './skill-card/skill-card.component';
 import { EducationCardComponent } from './education-card/education-card.component';
+import { PhonePipePipe } from './phone-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { EducationCardComponent } from './education-card/education-card.componen
     ExperienceListComponent,
     ExperienceCardComponent,
     SkillCardComponent,
-    EducationCardComponent
+    EducationCardComponent,
+    PhonePipePipe
   ],
   imports: [
     BrowserModule,
