@@ -21,3 +21,11 @@ html, body {
 h1, h2, h3, h4, ul, p {
     margin: 0;
 }
+
+li {
+    list-style-type: none;
+}
+
+ul {
+    padding-left: 0;
+}
