@@ -11,6 +11,6 @@ export class PhonePipePipe implements PipeTransform {
     let subscriberNumber = value.substring (6, 10);
 
     // Format each segment
-    return `(${areaCode}) ${centralOffice}- ${subscriberNumber}`;
+    return `(${areaCode}) ${centralOffice}-${subscriberNumber}`;
   }
 }
