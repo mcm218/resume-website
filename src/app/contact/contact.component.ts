@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { ContactMe } from '../models/contact-me';
 
 @Component({
@@ -7,6 +9,9 @@ import { ContactMe } from '../models/contact-me';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent {
+  faEnvolope = faEnvelope;
+  faLinkedIn = faLinkedin;
+  faGithub = faGithub;
 
   @Input () contact: ContactMe = new ContactMe ();
   

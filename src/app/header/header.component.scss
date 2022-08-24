@@ -1,7 +1,17 @@
 header {
+    position: fixed;
+    width: calc(100% - 2 * var(--site-side-padding));
+    top: 0;
+    left: 0;
+    padding: 16px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    overflow: hidden;
+}
+
+section {
+    padding: 0;
 }
 
 h1 {

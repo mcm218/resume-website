@@ -1,10 +1,13 @@
-<header>
+<header #header>
   <section>
     <h1>{{ title }}</h1>
-    <h2>{{ subtitle }}</h2>
+    <h2 #hideOnScroll>{{ subtitle }}</h2>
+    <div #hideOnScroll>
+        <app-education-card [education]="education"></app-education-card>
+    </div>
   </section>
   <section>
-    <app-education-card [education]="education"></app-education-card>
     <app-contact [contact]="contact"></app-contact>
   </section>
 </header>
+<div #header_offset id="header-offset"></div>
