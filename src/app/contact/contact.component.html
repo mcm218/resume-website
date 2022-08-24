@@ -1,12 +1,12 @@
 <section class="contact-info">
-  <a *ngIf="contact.email" [href]="'mailto:' + contact.email"
-    ><fa-icon class="icon" [icon]="faEnvolope" size="2x"></fa-icon
+  <a *ngIf="contact.email" [href]="'mailto:' + contact.email" alt=""
+    ><fa-icon class="icon" [icon]="faEnvolope" size="2x">Email me at {{ contact.email }}</fa-icon
   ></a>
   <!-- <p *ngIf="contact.phone">{{ contact.phone | phonePipe }}</p> -->
   <a *ngIf="contact.linkedin" [href]="contact.linkedin"
-    ><fa-icon class="icon" [icon]="faLinkedIn" size="2x"></fa-icon
+    ><fa-icon class="icon" [icon]="faLinkedIn" size="2x">Visit my LinkedIn</fa-icon
   ></a>
   <a *ngIf="contact.github" [href]="contact.github"
-    ><fa-icon class="icon" [icon]="faGithub" size="2x"></fa-icon
+    ><fa-icon class="icon" [icon]="faGithub" size="2x">Visit my Github</fa-icon
   ></a>
 </section>
