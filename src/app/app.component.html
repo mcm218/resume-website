@@ -1,4 +1,7 @@
 <div id="app-container">
+  <div class="wip-alert">
+    <p>WIP - Site is actively under development, please excuse any issues :)</p>
+  </div>
   <div id="primary-column">
     <section class="main-header">
       <app-header
@@ -12,14 +15,16 @@
       <app-experience-list [role]="item"> </app-experience-list>
     </section>
     <section id="skills-section">
+      <h1>Skills</h1>
+      <div id="skills-body">
         <article *ngFor="let skills of skillsLists">
-            <app-skills-list
-              [title]="skills.title"
-              [skills]="skills.skills"
-            ></app-skills-list>
-          </article>
+          <app-skills-list
+            [title]="skills.title"
+            [skills]="skills.skills"
+          ></app-skills-list>
+        </article>
+      </div>
     </section>
-
   </div>
 </div>
 <router-outlet></router-outlet>

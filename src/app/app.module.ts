@@ -11,6 +11,7 @@ import { ExperienceCardComponent } from './experience-card/experience-card.compo
 import { SkillCardComponent } from './skill-card/skill-card.component';
 import { EducationCardComponent } from './education-card/education-card.component';
 import { PhonePipePipe } from './phone-pipe.pipe';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PhonePipePipe } from './phone-pipe.pipe';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

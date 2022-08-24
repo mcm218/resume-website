@@ -55,7 +55,12 @@ a, a:visited {
 
 #skills-section {
     width: 100%;
+    h1 {
+        text-align: center;
+    }
+}
 
+#skills-body {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -80,4 +85,18 @@ a, a:visited {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+// WIP Alert
+.wip-alert {
+    z-index: 9999;
+    position: fixed;
+    border-radius: 10px;
+    width: 100px;
+    background-color: var(--blue);
+    color: white;
+    bottom: 16px;
+    right: 16px;
+    padding: 10px;
+    font-size: 10px;
 }
