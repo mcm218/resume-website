@@ -1,62 +1,83 @@
-#primary-column {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+#app-container {
+  --purple: #9b5de5;
+  --pink: #f15bb5;
+  --yellow: #fee440;
+  --blue: #00bbf9;
+  --green: #00f5d4;
 
-    --purple: #9B5DE5;
-    --pink: #F15BB5;
-    --yellow: #FEE440;
-    --blue: #00BBF9;
-    --green: #00F5D4;
+  --transparent-purple: rgba(155, 93, 229, 0.5);
 
-    --card-radius: 5px;
+  --card-radius: 5px;
+  --site-side-padding: 16px;
 
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+
+  background-image: url("../assets/headerBackground.jpg");
+  background-repeat: no-repeat;
+  background-color: black;
 }
 
-main {
-    height: 100%;
-    flex-grow: 2;
+
+
+a, a:visited {
+    color: white;
+}
+
+#primary-column {
+  height: 100%;
+  max-width: 1920px;
+
+  padding: 0 var(--site-side-padding);
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 200px;
+}
+
+#primary-column section:not(:first-child) {
+  background-color: rgba(0,0,0, 0.50);
+  border-radius: var(--card-radius);
+}
+
+#primary-column section:nth-child(even) {
+  align-self: flex-end;
+}
+
+#primary-column section:nth-child(odd) {
+  align-self: flex-start;
+}
+
+.main-header {
+    width: calc(100% - var(--site-side-padding));
+}
+
+#skills-section {
+    width: 100%;
+
     display: flex;
     flex-direction: row;
-    background-color: var(--purple);
-    overflow: hidden;
-    .main-header {
-        max-width: 30%;
-    }
-    .main-sidebar {
-        background-color: var(--green);
-        flex-shrink: 2;
-        min-width: 250px;
-        border-radius: 15px;
-        margin: 16px;
-        height: calc(100vh - 32px);
-    }
-    .main-header, .main-experience {
-        flex-grow: 2;
-        width: 70%;
-        padding: 16px;
-        height: calc(100vh - 32px);
-    }
+    justify-content: space-evenly;
 }
 
 // Scrollbar
 /* width */
 ::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+  background: #f1f1f1;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #888;
+  background: #888;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  background: #555;
 }

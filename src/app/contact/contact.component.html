@@ -1,7 +1,6 @@
 <section class="contact-info">
-    <!-- <h2>{{ contact.name }}</h2> -->
-    <a [href]="'mailto:' + contact.email">{{ contact.email }}</a>
-    <p>{{ contact.phone | phonePipe }}</p>
-    <a [href]="contact.linkedin">LinkedIn</a>
-    <a [href]="contact.github">GitHub</a>
+    <a *ngIf="contact.email" [href]="'mailto:' + contact.email">{{ contact.email }}</a>
+    <p *ngIf="contact.phone">{{ contact.phone | phonePipe }}</p>
+    <a *ngIf="contact.linkedin" [href]="contact.linkedin">LinkedIn</a>
+    <a *ngIf="contact.github" [href]="contact.github">GitHub</a>
 </section>

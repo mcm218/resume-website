@@ -1,28 +1,25 @@
-<div id="primary-column">
-    <main>
-        <section class="main-header">
-            <app-header [title]="contact.name" [subtitle]="contact.title"></app-header>
-        </section>
-        <section class="main-experience">
-            <ul>
-                <li *ngFor="let item of this.experienceList">
-                    <app-experience-list
-                        [role]="item"
-                    >
+<div id="app-container">
+  <div id="primary-column">
+    <section class="main-header">
+      <app-header
+        [title]="contact.name"
+        [subtitle]="contact.title"
+        [education]="education"
+        [contact]="contact"
+      ></app-header>
+    </section>
+    <section *ngFor="let item of this.experienceList">
+      <app-experience-list [role]="item"> </app-experience-list>
+    </section>
+    <section id="skills-section">
+        <article *ngFor="let skills of skillsLists">
+            <app-skills-list
+              [title]="skills.title"
+              [skills]="skills.skills"
+            ></app-skills-list>
+          </article>
+    </section>
 
-                    </app-experience-list>
-                </li>
-            </ul>
-        </section>
-        <aside class="main-sidebar">
-            <app-contact [contact]="contact"></app-contact>
-            <app-education-card [education]="education"></app-education-card>
-            <ul>
-                <li *ngFor="let skills of skillsLists">
-                    <app-skills-list [title]="skills.title" [skills]="skills.skills"></app-skills-list>
-                </li>
-            </ul>
-        </aside>
-    </main>
+  </div>
 </div>
 <router-outlet></router-outlet>
