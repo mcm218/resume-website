@@ -37,12 +37,26 @@ export class HeaderComponent implements AfterViewInit {
   ngAfterViewInit() {
     // Were the header and offset elements found?
     if (this.headerElement && this.offsetElement) {
+      // Get the native element
+      let headerNativeElement = this.headerElement.nativeElement;
+
+      // Grab the css values
+      const headerCSS = getComputedStyle(headerNativeElement);
+
+      // Get the padding and border values
+      const paddingY =
+        parseFloat(headerCSS.paddingTop) + parseFloat(headerCSS.paddingBottom);
+      const borderY =
+        parseFloat(headerCSS.borderTopWidth) +
+        parseFloat(headerCSS.borderBottomWidth);
+
       // Store the initial header height
-      this.initHeaderHeight = this.headerElement.nativeElement.offsetHeight;
+      this.initHeaderHeight =
+        headerNativeElement.offsetHeight - paddingY - borderY;
 
       // Set the offset element's height
       this.offsetElement.nativeElement.style.height =
-        this.initHeaderHeight.toString() + 'px';
+        headerNativeElement.offsetHeight.toString() + 'px';
     }
   }
 
@@ -75,7 +89,8 @@ export class HeaderComponent implements AfterViewInit {
     });
 
     // Update the background of the header element
-    this.headerElement.nativeElement.style.background = `rgba(0,0,0,${2 * scrollPercent})`;
-
+    this.headerElement.nativeElement.style.background = `rgba(0,0,0,${
+      2 * scrollPercent
+    })`;
   }
 }
