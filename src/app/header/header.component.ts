@@ -19,7 +19,7 @@ import { Education } from '../models/education';
 export class HeaderComponent implements AfterViewInit {
   initHeaderHeight = 0;
   finalHeaderHeight = 100;
-  finalScrollDistance = 270;
+  finalScrollDistance = 350;
 
   @Input() title: string = '';
   @Input() subtitle: string = '';
