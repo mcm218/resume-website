@@ -64,7 +64,7 @@ export class HeaderComponent implements AfterViewInit {
   @HostListener('window:scroll', ['$event'])
   onScroll(event: any) {
     // Get the distance the user has scrolled so far
-    let scrollDistance = event.path[1].pageYOffset;
+    let scrollDistance = window.pageYOffset;
 
     // Calculate the percent towards the final scroll distance
     let scrollPercent = scrollDistance / this.finalScrollDistance;
