@@ -1,0 +1,27 @@
+li {
+	padding: 5px 0;
+}
+
+
+.experience-primary {
+	margin-top: 20px;
+	margin-bottom: 5px;
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+}
+
+.experience-secondary {
+	margin-bottom: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+}
+
+li {
+	list-style: square; 
+}
+
+li:nth-child(even) {
+	color: lightgray;
+}

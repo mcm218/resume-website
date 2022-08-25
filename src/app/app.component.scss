@@ -1,25 +1,9 @@
 #app-container {
-  --purple: #9b5de5;
-  --pink: #f15bb5;
-  --yellow: #fee440;
-  --blue: #00bbf9;
-  --green: #00f5d4;
-
-  --transparent-purple: rgba(155, 93, 229, 0.5);
-
-  --card-radius: 5px;
-  --site-side-padding: 16px;
-
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: white;
-
   background-image: url("../assets/headerBackground.jpg");
   background-size: 100% auto;
   background-repeat: no-repeat;
   background-color: black;
 }
-
-
 
 a, a:visited {
     color: white;
@@ -38,7 +22,7 @@ a, a:visited {
 }
 
 #primary-column section:not(:first-child) {
-  background-color: rgba(0,0,0, 0.50);
+  background-color: rgba(0,0,0, 0.70);
   border-radius: var(--card-radius);
 }
 

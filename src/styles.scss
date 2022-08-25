@@ -1,31 +1,76 @@
 /* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+}
+body {
+  --purple: #9b5de5;
+  --pink: #f15bb5;
+  --yellow: #fee440;
+  --blue: #00bbf9;
+  --green: #00f5d4;
+  --red: #e76f51;
+  --light-red: #f4a261;
+
+  --transparent-purple: rgba(155, 93, 229, 0.5);
+
+  --card-radius: 5px;
+  --site-side-padding: 16px;
+
+  color: white;
+
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
 section {
-   padding: 16px; 
+  padding: 16px;
 }
 
 aside {
-    padding: 16px;
+  padding: 16px;
 }
 
 header {
-    padding: 16px;
+  padding: 16px;
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
+h1,
+h2,
+h3,
+h4,
+ul,
+p {
+  margin: 0;
+}
 
-h1, h2, h3, h4, ul, p {
-    margin: 0;
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: 3px;
+  font-weight: 200;
+}
+
+p {
+    font-weight: 300;
+}
+
+h3 {
+  color: var(--blue);
 }
 
 li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 ul {
-    padding-left: 0;
+  padding-left: 0;
 }
