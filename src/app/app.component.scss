@@ -59,6 +59,18 @@ a, a:visited {
     #app-container {
         background-image: url("../assets/phoneBackground.jpg");
     }
+
+    #primary-column {
+        padding: 0;
+
+        section {
+            border-radius: 0 !important;
+        }
+
+        article {
+            padding: 16px;
+        }
+    }
 }
 
 
