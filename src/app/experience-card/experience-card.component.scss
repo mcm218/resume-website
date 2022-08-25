@@ -7,6 +7,8 @@ li {
 	margin-top: 20px;
 	margin-bottom: 5px;
 	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
 	justify-content: space-between;
 	align-items: baseline;
 }
@@ -14,6 +16,8 @@ li {
 .experience-secondary {
 	margin-bottom: 20px;
 	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
 	justify-content: space-between;
 	align-items: baseline;
 }

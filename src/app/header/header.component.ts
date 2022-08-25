@@ -31,6 +31,7 @@ export class HeaderComponent implements AfterViewInit {
   @ViewChild('header') headerElement!: ElementRef;
   @ViewChild('header_offset') offsetElement!: ElementRef;
   @ViewChildren('hideOnScroll') hideOnScrollElements!: QueryList<ElementRef>;
+  @ViewChildren('hideOnScrollPhone') hideOnScrollPhoneElements!: QueryList<ElementRef>;
 
   constructor() {}
 
@@ -87,6 +88,15 @@ export class HeaderComponent implements AfterViewInit {
     this.hideOnScrollElements.forEach((element) => {
       element.nativeElement.style.opacity = 1 - 2 * scrollPercent;
     });
+
+    // Is the device width < 600
+    if (screen.width < 600) {
+      console.log (screen.width);
+      // If so, update transparency of any hideOnScrollPhone elements
+      this.hideOnScrollPhoneElements.forEach((element) => {
+        element.nativeElement.style.opacity = 1 - 2 * scrollPercent;
+      });
+    }
 
     // Update the background of the header element
     this.headerElement.nativeElement.style.background = `rgba(0,0,0,${

@@ -50,7 +50,17 @@ a, a:visited {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
+
+// Phone styling
+
+@media screen and (max-width: 600px) {
+    #app-container {
+        background-image: url("../assets/phoneBackground.jpg");
+    }
+}
+
 
 // Scrollbar
 /* width */
