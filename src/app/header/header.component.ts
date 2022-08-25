@@ -91,7 +91,6 @@ export class HeaderComponent implements AfterViewInit {
 
     // Is the device width < 600
     if (screen.width < 600) {
-      console.log (screen.width);
       // If so, update transparency of any hideOnScrollPhone elements
       this.hideOnScrollPhoneElements.forEach((element) => {
         element.nativeElement.style.opacity = 1 - 2 * scrollPercent;
