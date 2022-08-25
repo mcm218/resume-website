@@ -108,8 +108,8 @@ export class HeaderComponent implements AfterViewInit {
       let newTitleSize = this.initH1Size;
 
       if (scrollDistance != 0) {
-        // Calculate the new header height with the ratio for initial header height shrinking
-        // and the ratio of the final header height increasing as the user scrolls
+        // Calculate the new sizes with the ratio for initial sizes shrinking
+        // and the ratio of the final size increasing as the user scrolls
         newHeaderHeight =
           (1 - scrollPercent) * this.initHeaderHeight +
           scrollPercent * this.finalMobileHeaderHeight;
@@ -119,7 +119,8 @@ export class HeaderComponent implements AfterViewInit {
           scrollPercent * this.finalH1Size;
       }
 
-      this.titleElement.nativeElement.style.fontSize = newTitleSize + 'px'; // Update the header height
+      // Update the title and header sizes
+      this.titleElement.nativeElement.style.fontSize = newTitleSize + 'px';
       this.headerElement.nativeElement.style.height = newHeaderHeight + 'px';
     }
 
