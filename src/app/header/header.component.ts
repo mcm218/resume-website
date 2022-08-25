@@ -18,7 +18,10 @@ import { Education } from '../models/education';
 })
 export class HeaderComponent implements AfterViewInit {
   initHeaderHeight = 0;
+  initH1Size = 0;
+  finalH1Size = 30;
   finalHeaderHeight = 100;
+  finalMobileHeaderHeight = 50;
   finalScrollDistance = 350;
 
   @Input() title: string = '';
@@ -28,10 +31,12 @@ export class HeaderComponent implements AfterViewInit {
 
   @Input() contact: ContactMe = new ContactMe();
 
+  @ViewChild('titleElement') titleElement!: ElementRef;
   @ViewChild('header') headerElement!: ElementRef;
   @ViewChild('header_offset') offsetElement!: ElementRef;
   @ViewChildren('hideOnScroll') hideOnScrollElements!: QueryList<ElementRef>;
-  @ViewChildren('hideOnScrollPhone') hideOnScrollPhoneElements!: QueryList<ElementRef>;
+  @ViewChildren('hideOnScrollPhone')
+  hideOnScrollPhoneElements!: QueryList<ElementRef>;
 
   constructor() {}
 
@@ -40,8 +45,10 @@ export class HeaderComponent implements AfterViewInit {
     if (this.headerElement && this.offsetElement) {
       // Get the native element
       let headerNativeElement = this.headerElement.nativeElement;
+      let titleNativeElement = this.titleElement.nativeElement;
 
       // Grab the css values
+      const titleCSS = getComputedStyle(titleNativeElement);
       const headerCSS = getComputedStyle(headerNativeElement);
 
       // Get the padding and border values
@@ -54,6 +61,8 @@ export class HeaderComponent implements AfterViewInit {
       // Store the initial header height
       this.initHeaderHeight =
         headerNativeElement.offsetHeight - paddingY - borderY;
+
+      this.initH1Size = parseInt(titleCSS.fontSize.slice(0, -2));
 
       // Set the offset element's height
       this.offsetElement.nativeElement.style.height =
@@ -95,6 +104,23 @@ export class HeaderComponent implements AfterViewInit {
       this.hideOnScrollPhoneElements.forEach((element) => {
         element.nativeElement.style.opacity = 1 - 2 * scrollPercent;
       });
+
+      let newTitleSize = this.initH1Size;
+
+      if (scrollDistance != 0) {
+        // Calculate the new header height with the ratio for initial header height shrinking
+        // and the ratio of the final header height increasing as the user scrolls
+        newHeaderHeight =
+          (1 - scrollPercent) * this.initHeaderHeight +
+          scrollPercent * this.finalMobileHeaderHeight;
+
+        newTitleSize =
+          (1 - scrollPercent) * this.initH1Size +
+          scrollPercent * this.finalH1Size;
+      }
+
+      this.titleElement.nativeElement.style.fontSize = newTitleSize + 'px'; // Update the header height
+      this.headerElement.nativeElement.style.height = newHeaderHeight + 'px';
     }
 
     // Update the background of the header element
