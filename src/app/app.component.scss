@@ -1,11 +1,3 @@
-@media screen and (max-width: 600px) {
-    #app-container {
-      overflow-x: hidden;
-      width: 100%;
-    }
-  }
-  
-
 #app-container {
   background-image: url("../assets/headerBackground.jpg");
   background-size: 100% auto;
@@ -13,8 +5,13 @@
   background-color: black;
 }
 
-a, a:visited {
-    color: white;
+a,
+a:visited {
+  color: white;
+}
+
+#mobile-underlay {
+  display: none;
 }
 
 #primary-column {
@@ -30,7 +27,7 @@ a, a:visited {
 }
 
 #primary-column section:not(:first-child) {
-  background-color: rgba(0,0,0, 0.70);
+  background-color: rgba(0, 0, 0, 0.7);
   border-radius: var(--card-radius);
 }
 
@@ -43,44 +40,67 @@ a, a:visited {
 }
 
 .main-header {
-    padding-top: 0;
-    width: calc(100% - var(--site-side-padding));
+  padding-top: 0;
+  width: calc(100% - var(--site-side-padding));
 }
 
 #skills-section {
-    width: 100%;
-    h1 {
-        text-align: center;
-    }
+  width: 100%;
+  h1 {
+    text-align: center;
+  }
 }
 
 #skills-body {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 // Phone styling
 
 @media screen and (max-width: 600px) {
-    #app-container {
-        background-image: url("../assets/phoneBackground.jpg");
+  #app-container {
+    background-image: url("../assets/phoneBackground.jpg");
+    background-size: auto 100%;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  #primary-column {
+    padding: 0;
+
+    section {
+      border-radius: 0 !important;
     }
 
-    #primary-column {
-        padding: 0;
-
-        section {
-            border-radius: 0 !important;
-        }
-
-        article {
-            padding: 1rem;
-        }
+    article {
+      padding: 1rem;
     }
+  }
+
+  #primary-column > * {
+    z-index: 1;
+  }
+
+  #mobile-underlay {
+    z-index: 0;
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0);
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 70%,
+      rgba(0, 0, 0, 0.7) 90%,
+      rgba(0, 0, 0, 1) 100%
+    );
+    height: auto;
+    width: 100%;
+  }
 }
-
 
 // Scrollbar
 /* width */
@@ -105,14 +125,14 @@ a, a:visited {
 
 // WIP Alert
 .wip-alert {
-    z-index: 9999;
-    position: fixed;
-    border-radius: 0.6rem;
-    width: 10rem;
-    background-color: var(--blue);
-    color: black;
-    bottom: 1rem;
-    right: 1rem;
-    padding: 1rem;
-    font-size: 1rem;
+  z-index: 9999;
+  position: fixed;
+  border-radius: 0.6rem;
+  width: 10rem;
+  background-color: var(--blue);
+  color: black;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 1rem;
+  font-size: 1rem;
 }
