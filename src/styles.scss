@@ -1,8 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+@media screen and (max-width: 600px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+  body {
+    position: relative;
+  }
+}
+
 html,
 body {
   height: 100%;
 }
+
 body {
   --purple: #9b5de5;
   --pink: #f15bb5;
@@ -59,21 +70,20 @@ h4 {
   font-weight: 200;
 }
 
-
 h1 {
-    font-size: 86px;
+  font-size: 86px;
 }
 
 h2 {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 h3 {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 p {
-    font-weight: 300;
+  font-weight: 300;
 }
 
 h3 {
@@ -89,5 +99,5 @@ ul {
 }
 
 a:-webkit-any-link {
-    color: inherit;
+  color: inherit;
 }
