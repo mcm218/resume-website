@@ -18,8 +18,8 @@ import { Education } from '../models/education';
 })
 export class HeaderComponent implements AfterViewInit {
   initHeaderHeight = 0;
-  initH1Size = 86;
-  finalH1Size = 30;
+  initH1Size = 4;
+  finalH1Size = 2;
   finalHeaderHeight = 100;
   finalMobileHeaderHeight = 50;
   finalScrollDistance = 350;
@@ -45,7 +45,6 @@ export class HeaderComponent implements AfterViewInit {
     if (this.headerElement && this.offsetElement) {
       // Get the native element
       let headerNativeElement = this.headerElement.nativeElement;
-      let titleNativeElement = this.titleElement.nativeElement;
 
       // Grab the css values
       const headerCSS = getComputedStyle(headerNativeElement);
@@ -136,7 +135,7 @@ export class HeaderComponent implements AfterViewInit {
       }
 
       // Update the title and header sizes
-      this.titleElement.nativeElement.style.fontSize = newTitleSize + 'px';
+      this.titleElement.nativeElement.style.fontSize = newTitleSize + 'rem';
       this.headerElement.nativeElement.style.height = newHeaderHeight + 'px';
     }
 
