@@ -13,6 +13,7 @@ import { EducationCardComponent } from './education-card/education-card.componen
 import { PhonePipePipe } from './phone-pipe.pipe';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { WipAlertComponent } from './wip-alert/wip-alert.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ExperienceCardComponent,
     SkillCardComponent,
     EducationCardComponent,
-    PhonePipePipe
+    PhonePipePipe,
+    WipAlertComponent
   ],
   imports: [
     BrowserModule,
