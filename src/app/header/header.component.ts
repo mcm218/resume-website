@@ -21,7 +21,7 @@ export class HeaderComponent implements AfterViewInit {
   initH1Size = 0;
   finalH1Size = 30;
   finalHeaderHeight = 100;
-  finalMobileHeaderHeight = 50;
+  finalMobileHeaderHeight = 75;
   finalScrollDistance = 350;
 
   @Input() title: string = '';
