@@ -18,7 +18,7 @@ import { Education } from '../models/education';
 })
 export class HeaderComponent implements AfterViewInit {
   initHeaderHeight = 0;
-  initH1Size = 0;
+  initH1Size = 86;
   finalH1Size = 30;
   finalHeaderHeight = 100;
   finalMobileHeaderHeight = 75;
@@ -48,7 +48,6 @@ export class HeaderComponent implements AfterViewInit {
       let titleNativeElement = this.titleElement.nativeElement;
 
       // Grab the css values
-      const titleCSS = getComputedStyle(titleNativeElement);
       const headerCSS = getComputedStyle(headerNativeElement);
 
       // Get the padding and border values
@@ -61,8 +60,6 @@ export class HeaderComponent implements AfterViewInit {
       // Store the initial header height
       this.initHeaderHeight =
         headerNativeElement.offsetHeight - paddingY - borderY;
-
-      this.initH1Size = parseInt(titleCSS.fontSize.slice(0, -2));
 
       // Set the offset element's height
       this.offsetElement.nativeElement.style.height =
