@@ -27,5 +27,10 @@ li {
 }
 
 li:nth-child(even) {
+	font-weight: 400;
+}
+
+li:nth-child(odd) {
+	font-weight: 300;
 	color: lightgray;
 }

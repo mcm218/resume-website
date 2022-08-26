@@ -17,11 +17,17 @@ import { Education } from '../models/education';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements AfterViewInit {
-  initHeaderHeight = 0;
+  initialFontColor = [0, 0, 0];
+  initialFontColorMobile = [255, 255, 255];
+  finalFontColor = [255, 255, 255];
+
   initH1Size = 4;
   finalH1Size = 2;
+
+  initHeaderHeight = 0;
   finalHeaderHeight = 100;
   finalMobileHeaderHeight = 50;
+
   finalScrollDistance = 350;
 
   @Input() title: string = '';
@@ -64,10 +70,6 @@ export class HeaderComponent implements AfterViewInit {
       this.offsetElement.nativeElement.style.height =
         headerNativeElement.offsetHeight.toString() + 'px';
 
-      // Initialize font colors
-
-      // Update font colors
-
       // Get the distance the user has scrolled so far
       let scrollDistance = window.pageYOffset;
 
@@ -76,8 +78,30 @@ export class HeaderComponent implements AfterViewInit {
       // Cap scroll percent at 1
       scrollPercent = scrollPercent > 1 ? 1 : scrollPercent;
 
-      let colorValue = 255 * scrollPercent;
-      this.headerElement.nativeElement.style.color = `rgba(${colorValue},${colorValue},${colorValue},1)`;
+      let red, blue, green;
+      red =
+        (1 - scrollPercent) * this.initialFontColor[0] +
+        scrollPercent * this.finalFontColor[0];
+      green =
+        (1 - scrollPercent) * this.initialFontColor[1] +
+        scrollPercent * this.finalFontColor[1];
+      blue =
+        (1 - scrollPercent) * this.initialFontColor[1] +
+        scrollPercent * this.finalFontColor[1];
+
+      if (screen.width < 600) {
+        red =
+          (1 - scrollPercent) * this.initialFontColorMobile[0] +
+          scrollPercent * this.finalFontColor[0];
+        green =
+          (1 - scrollPercent) * this.initialFontColorMobile[1] +
+          scrollPercent * this.finalFontColor[1];
+        blue =
+          (1 - scrollPercent) * this.initialFontColorMobile[1] +
+          scrollPercent * this.finalFontColor[1];
+      }
+
+      this.headerElement.nativeElement.style.color = `rgba(${red},${green},${blue},1)`;
     }
   }
 
@@ -105,8 +129,30 @@ export class HeaderComponent implements AfterViewInit {
     this.headerElement.nativeElement.style.height = newHeaderHeight + 'px';
 
     // Update font colors
-    let colorValue = 255 * scrollPercent;
-    this.headerElement.nativeElement.style.color = `rgba(${colorValue},${colorValue},${colorValue},1)`;
+    let red, blue, green;
+    red =
+      (1 - scrollPercent) * this.initialFontColor[0] +
+      scrollPercent * this.finalFontColor[0];
+    green =
+      (1 - scrollPercent) * this.initialFontColor[1] +
+      scrollPercent * this.finalFontColor[1];
+    blue =
+      (1 - scrollPercent) * this.initialFontColor[1] +
+      scrollPercent * this.finalFontColor[1];
+
+    if (screen.width < 600) {
+      red =
+        (1 - scrollPercent) * this.initialFontColorMobile[0] +
+        scrollPercent * this.finalFontColor[0];
+      green =
+        (1 - scrollPercent) * this.initialFontColorMobile[1] +
+        scrollPercent * this.finalFontColor[1];
+      blue =
+        (1 - scrollPercent) * this.initialFontColorMobile[1] +
+        scrollPercent * this.finalFontColor[1];
+    }
+
+    this.headerElement.nativeElement.style.color = `rgba(${red},${green},${blue},1)`;
 
     // Update transparency of any hideOnScroll elements
     this.hideOnScrollElements.forEach((element) => {
