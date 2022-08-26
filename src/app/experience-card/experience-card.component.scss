@@ -1,23 +1,23 @@
 li {
-	padding: 5px 0;
+	padding: 0.25rem 0;
 }
 
 
 .experience-primary {
-	margin-top: 20px;
-	margin-bottom: 5px;
+	margin-top: 1.25rem;
+	margin-bottom: 0.25rem;
 	display: flex;
 	flex-wrap: wrap;
-	gap: 10px;
+	gap: 0.5rem;
 	justify-content: space-between;
 	align-items: baseline;
 }
 
 .experience-secondary {
-	margin-bottom: 20px;
+	margin-bottom: 1.25rem;
 	display: flex;
 	flex-wrap: wrap;
-	gap: 10px;
+	gap: 0.5rem;
 	justify-content: space-between;
 	align-items: baseline;
 }

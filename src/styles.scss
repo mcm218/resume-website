@@ -2,6 +2,7 @@
 html,
 body {
   height: 100%;
+  font-size: 16px;
 }
 
 body {
@@ -15,8 +16,8 @@ body {
 
   --transparent-purple: rgba(155, 93, 229, 0.5);
 
-  --card-radius: 5px;
-  --site-side-padding: 16px;
+  --card-radius: 0.3rem;
+  --site-side-padding: 1rem;
 
   color: white;
 
@@ -25,15 +26,15 @@ body {
 }
 
 section {
-  padding: 16px;
+  padding: 1rem;
 }
 
 aside {
-  padding: 16px;
+  padding: 1rem;
 }
 
 header {
-  padding: 16px;
+  padding: 1rem;
 }
 
 html,
@@ -56,20 +57,20 @@ h1,
 h2,
 h3,
 h4 {
-  letter-spacing: 3px;
+  letter-spacing: 0.3rem;
   font-weight: 200;
 }
 
 h1 {
-  font-size: 86px;
+  font-size: 4rem;
 }
 
 h2 {
-  font-size: 30px;
+  font-size: 2rem;
 }
 
 h3 {
-  font-size: 20px;
+  font-size: 1.5rem;
 }
 
 p {
