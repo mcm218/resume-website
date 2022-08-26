@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("./assets/Montserrat/Montserrat.css");
+
 html,
 body {
   height: 100%;
@@ -22,7 +24,7 @@ body {
   color: white;
 
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: "Montserrat", "Helvetica Neue", sans-serif;
 }
 
 section {
