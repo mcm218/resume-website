@@ -1,17 +1,13 @@
 .contact-info {
-    display: flex;
-    flex-direction: row-reverse;
-    flex-wrap: wrap;
-    gap: 20px;
-
-    .icon {
-        color: var(--blue);
-    }
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 @media screen and (max-width: 600px) {
-    .contact-info {
-        flex-direction: row;
-        padding-left: 0;
-    }
+  .contact-info {
+    flex-direction: row;
+    padding-left: 0;
+  }
 }

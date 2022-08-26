@@ -67,6 +67,21 @@ export class HeaderComponent implements AfterViewInit {
       // Set the offset element's height
       this.offsetElement.nativeElement.style.height =
         headerNativeElement.offsetHeight.toString() + 'px';
+
+      // Initialize font colors
+
+      // Update font colors
+
+      // Get the distance the user has scrolled so far
+      let scrollDistance = window.pageYOffset;
+
+      // Calculate the percent towards the final scroll distance
+      let scrollPercent = scrollDistance / this.finalScrollDistance;
+      // Cap scroll percent at 1
+      scrollPercent = scrollPercent > 1 ? 1 : scrollPercent;
+
+      let colorValue = 255 * scrollPercent;
+      this.headerElement.nativeElement.style.color = `rgba(${colorValue},${colorValue},${colorValue},1)`;
     }
   }
 
@@ -92,6 +107,10 @@ export class HeaderComponent implements AfterViewInit {
 
     // Update the header height
     this.headerElement.nativeElement.style.height = newHeaderHeight + 'px';
+
+    // Update font colors
+    let colorValue = 255 * scrollPercent;
+    this.headerElement.nativeElement.style.color = `rgba(${colorValue},${colorValue},${colorValue},1)`;
 
     // Update transparency of any hideOnScroll elements
     this.hideOnScrollElements.forEach((element) => {
