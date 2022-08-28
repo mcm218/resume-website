@@ -97,6 +97,9 @@ export class HeaderComponent implements AfterViewInit {
         this.colorValues
       );
 
+      // Set the final scroll distance
+      this.finalScrollDistance = (screen.availHeight * 1) * 0.75;
+
       this.isInitialized = true;
     }
   }
