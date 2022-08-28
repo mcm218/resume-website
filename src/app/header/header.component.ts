@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { ContactMe } from '../models/contact-me';
 import { Education } from '../models/education';
+import { OnScrollValuePair } from '../models/on-scroll-value-pair';
 
 @Component({
   selector: 'app-header',
@@ -17,16 +18,32 @@ import { Education } from '../models/education';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements AfterViewInit {
-  initialFontColor = [0, 0, 0];
-  initialFontColorMobile = [255, 255, 255];
-  finalFontColor = [255, 255, 255];
+  headerValues: OnScrollValuePair<number> = new OnScrollValuePair(
+    0,
+    100,
+    0,
+    50
+  );
 
-  initH1Size = 4;
-  finalH1Size = 2;
+  titleValues: OnScrollValuePair<number> = new OnScrollValuePair(4, 4, 4, 2);
 
-  initHeaderHeight = 0;
-  finalHeaderHeight = 100;
-  finalMobileHeaderHeight = 50;
+  colorValues: OnScrollValuePair<[number, number, number]> =
+    new OnScrollValuePair(
+      [0, 0, 0],
+      [255, 255, 255],
+      [255, 255, 255],
+      [255, 255, 255]
+    );
+
+  opacityValues: OnScrollValuePair<number> = new OnScrollValuePair(1, 0, 1, 0);
+
+  backgroundColorValues: OnScrollValuePair<[number, number, number, number]> =
+    new OnScrollValuePair(
+      [0, 0, 0, 0],
+      [0, 0, 0, 1],
+      [0, 0, 0, 0],
+      [0, 0, 0, 1]
+    );
 
   finalScrollDistance = 350;
 
@@ -43,6 +60,8 @@ export class HeaderComponent implements AfterViewInit {
   @ViewChildren('hideOnScroll') hideOnScrollElements!: QueryList<ElementRef>;
   @ViewChildren('hideOnScrollPhone')
   hideOnScrollPhoneElements!: QueryList<ElementRef>;
+
+  isInitialized: boolean = false;
 
   constructor() {}
 
@@ -63,131 +82,153 @@ export class HeaderComponent implements AfterViewInit {
         parseFloat(headerCSS.borderBottomWidth);
 
       // Store the initial header height
-      this.initHeaderHeight =
-        headerNativeElement.offsetHeight - paddingY - borderY;
+      this.headerValues.initialDesktopValue =
+        this.headerValues.initialMobileValue =
+          headerNativeElement.offsetHeight - paddingY - borderY;
 
-      // Set the offset element's height
+      // Update the height of the offset element
       this.offsetElement.nativeElement.style.height =
         headerNativeElement.offsetHeight.toString() + 'px';
 
-      // Get the distance the user has scrolled so far
-      let scrollDistance = window.pageYOffset;
+      // Update font colors
+      this.UpdatePropertyOnScroll(
+        this.headerElement.nativeElement.style,
+        PropertyType.color,
+        this.colorValues
+      );
 
-      // Calculate the percent towards the final scroll distance
-      let scrollPercent = scrollDistance / this.finalScrollDistance;
-      // Cap scroll percent at 1
-      scrollPercent = scrollPercent > 1 ? 1 : scrollPercent;
-
-      let red, blue, green;
-      red =
-        (1 - scrollPercent) * this.initialFontColor[0] +
-        scrollPercent * this.finalFontColor[0];
-      green =
-        (1 - scrollPercent) * this.initialFontColor[1] +
-        scrollPercent * this.finalFontColor[1];
-      blue =
-        (1 - scrollPercent) * this.initialFontColor[1] +
-        scrollPercent * this.finalFontColor[1];
-
-      if (screen.width < 600) {
-        red =
-          (1 - scrollPercent) * this.initialFontColorMobile[0] +
-          scrollPercent * this.finalFontColor[0];
-        green =
-          (1 - scrollPercent) * this.initialFontColorMobile[1] +
-          scrollPercent * this.finalFontColor[1];
-        blue =
-          (1 - scrollPercent) * this.initialFontColorMobile[1] +
-          scrollPercent * this.finalFontColor[1];
-      }
-
-      this.headerElement.nativeElement.style.color = `rgba(${red},${green},${blue},1)`;
+      this.isInitialized = true;
     }
   }
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event: any) {
-    // Get the distance the user has scrolled so far
-    let scrollDistance = window.pageYOffset;
+    if (this.isInitialized == false) return;
 
-    // Calculate the percent towards the final scroll distance
-    let scrollPercent = scrollDistance / this.finalScrollDistance;
-    // Cap scroll percent at 1
-    scrollPercent = scrollPercent > 1 ? 1 : scrollPercent;
+    this.UpdateScrollValues();
+  }
 
-    let newHeaderHeight = this.initHeaderHeight;
-    // If scroll distance isn't 0, calculate the new header height
-    if (scrollDistance != 0) {
-      // Calculate the new header height with the ratio for initial header height shrinking
-      // and the ratio of the final header height increasing as the user scrolls
-      newHeaderHeight =
-        (1 - scrollPercent) * this.initHeaderHeight +
-        scrollPercent * this.finalHeaderHeight;
-    }
-
-    // Update the header height
-    this.headerElement.nativeElement.style.height = newHeaderHeight + 'px';
+  UpdateScrollValues() {
+    // Update height
+    this.UpdatePropertyOnScroll(
+      this.headerElement.nativeElement.style,
+      PropertyType.height,
+      this.headerValues
+    );
 
     // Update font colors
-    let red, blue, green;
-    red =
-      (1 - scrollPercent) * this.initialFontColor[0] +
-      scrollPercent * this.finalFontColor[0];
-    green =
-      (1 - scrollPercent) * this.initialFontColor[1] +
-      scrollPercent * this.finalFontColor[1];
-    blue =
-      (1 - scrollPercent) * this.initialFontColor[1] +
-      scrollPercent * this.finalFontColor[1];
-
-    if (screen.width < 600) {
-      red =
-        (1 - scrollPercent) * this.initialFontColorMobile[0] +
-        scrollPercent * this.finalFontColor[0];
-      green =
-        (1 - scrollPercent) * this.initialFontColorMobile[1] +
-        scrollPercent * this.finalFontColor[1];
-      blue =
-        (1 - scrollPercent) * this.initialFontColorMobile[1] +
-        scrollPercent * this.finalFontColor[1];
-    }
-
-    this.headerElement.nativeElement.style.color = `rgba(${red},${green},${blue},1)`;
+    this.UpdatePropertyOnScroll(
+      this.headerElement.nativeElement.style,
+      PropertyType.color,
+      this.colorValues
+    );
 
     // Update transparency of any hideOnScroll elements
     this.hideOnScrollElements.forEach((element) => {
-      element.nativeElement.style.opacity = 1 - 2 * scrollPercent;
+      this.UpdatePropertyOnScroll(
+        element.nativeElement.style,
+        PropertyType.opacity,
+        this.opacityValues,
+        2
+      );
     });
 
-    // Is the device width < 600
-    if (screen.width < 600) {
-      // If so, update transparency of any hideOnScrollPhone elements
-      this.hideOnScrollPhoneElements.forEach((element) => {
-        element.nativeElement.style.opacity = 1 - 2 * scrollPercent;
-      });
+    // Update font size
+    this.UpdatePropertyOnScroll(
+      this.titleElement.nativeElement.style,
+      PropertyType.fontSize,
+      this.titleValues
+    );
 
-      let newTitleSize = this.initH1Size;
+    // Update background
+    this.UpdatePropertyOnScroll(
+      this.headerElement.nativeElement.style,
+      PropertyType.background,
+      this.backgroundColorValues,
+      2
+    );
+  }
 
-      if (scrollDistance != 0) {
-        // Calculate the new sizes with the ratio for initial sizes shrinking
-        // and the ratio of the final size increasing as the user scrolls
-        newHeaderHeight =
-          (1 - scrollPercent) * this.initHeaderHeight +
-          scrollPercent * this.finalMobileHeaderHeight;
+  UpdatePropertyOnScroll(
+    style: any,
+    propertyType: PropertyType,
+    valuePair: OnScrollValuePair<any>,
+    speed: number = 1
+  ) {
+    // Get the distance the user has scrolled so far
+    let scrollDistance = window.pageYOffset;
 
-        newTitleSize =
-          (1 - scrollPercent) * this.initH1Size +
-          scrollPercent * this.finalH1Size;
+    // Calculate the percent towards the final scroll distance and cap at 1
+    let scrollPercent =
+      speed * Math.min(scrollDistance / this.finalScrollDistance, 1);
+
+    // Is this a mobile device?
+    let isMobile = screen.width < 600;
+
+    let newValue: any;
+
+    // Calculate the new value
+
+    // Is the property color or background?
+    if (
+      propertyType == PropertyType.color ||
+      propertyType == PropertyType.background
+    ) {
+      newValue = Array<number>();
+      // If so, iterate through the value arrays and calculate the value for the current index
+      for (
+        let index = 0;
+        index < valuePair.initialMobileValue.length;
+        index++
+      ) {
+        if (isMobile) {
+          newValue[index] =
+            (1 - scrollPercent) * valuePair.initialMobileValue[index] +
+            scrollPercent * valuePair.finalMobileValue[index];
+        } else {
+          newValue[index] =
+            (1 - scrollPercent) * valuePair.initialDesktopValue[index] +
+            scrollPercent * valuePair.finalDesktopValue[index];
+        }
       }
-
-      // Update the title and header sizes
-      this.titleElement.nativeElement.style.fontSize = newTitleSize + 'rem';
-      this.headerElement.nativeElement.style.height = newHeaderHeight + 'px';
+    } else {
+      // Otherwise, just calculate the new value
+      if (isMobile) {
+        newValue =
+          (1 - scrollPercent) * valuePair.initialMobileValue +
+          scrollPercent * valuePair.finalMobileValue;
+      } else {
+        newValue =
+          (1 - scrollPercent) * valuePair.initialDesktopValue +
+          scrollPercent * valuePair.finalDesktopValue;
+      }
     }
 
-    // Update the background of the header element
-    this.headerElement.nativeElement.style.background = `rgba(0,0,0,${
-      2 * scrollPercent
-    })`;
+    // Update the property
+    switch (propertyType) {
+      case PropertyType.height:
+        style.height = newValue.toString() + 'px';
+        break;
+      case PropertyType.fontSize:
+        style.fontSize = newValue.toString() + 'rem';
+        break;
+      case PropertyType.color:
+        style.color = `rgb(${newValue[0]},${newValue[1]},${newValue[2]})`;
+        break;
+      case PropertyType.opacity:
+        style.opacity = newValue.toString();
+        break;
+      case PropertyType.background:
+        style.background = `rgba(${newValue[0]},${newValue[1]},${newValue[2]}, ${newValue[3]})`;
+        break;
+    }
   }
+}
+
+enum PropertyType {
+  height,
+  fontSize,
+  color,
+  opacity,
+  background,
 }
