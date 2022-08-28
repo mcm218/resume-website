@@ -23,7 +23,7 @@ export class AppComponent implements AfterViewInit {
     // Are we on a mobile device?
     if (window.screen.width < 600) {
       let appContainerCSS = getComputedStyle (this.appContainerElement.nativeElement);
-      this.appContainerElement.nativeElement.style.backgroundSize = "auto " + window.screen.height + "px";
+      this.appContainerElement.nativeElement.style.backgroundSize = "auto " + window.screen.availHeight + "px";
     }
   }
 }
