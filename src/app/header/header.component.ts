@@ -78,8 +78,8 @@ export class HeaderComponent implements AfterViewInit {
       const paddingY =
         parseFloat(headerCSS.paddingTop) + parseFloat(headerCSS.paddingBottom);
       const borderY =
-        parseFloat(headerCSS.borderTopWidth) +
-        parseFloat(headerCSS.borderBottomWidth);
+        parseFloat(headerCSS.borderTop) +
+        parseFloat(headerCSS.borderBottom);
 
       // Store the initial header height
       this.headerValues.initialDesktopValue =

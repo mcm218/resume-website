@@ -108,6 +108,22 @@ a:visited {
   }
 }
 
+// > 2 DPR backgrounds
+@media screen and (-moz-min-device-pixel-ratio: 2),
+  screen and (-o-min-device-pixel-ratio: 2/1),
+  screen and (-webkit-min-device-pixel-ratio: 2),
+  screen and (min-device-pixel-ratio: 2) {
+  #app-container {
+    background-image: url("../assets/headerBackground@2x.jpg");
+  }
+
+  @media screen and (max-width: 600px) {
+    #app-container {
+      background-image: url("../assets/phoneBackground@2x.jpg");
+    }
+  }
+}
+
 // Scrollbar
 /* width */
 ::-webkit-scrollbar {
