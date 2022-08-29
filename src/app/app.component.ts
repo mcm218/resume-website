@@ -23,7 +23,7 @@ export class AppComponent implements AfterViewInit {
   ngAfterViewInit () {
     // Are we on a mobile device?
     if (window.screen.width < 600) {
-      this.appContainerElement.nativeElement.style.height = window.screen.availHeight + "px";
+      this.mobileUnderlayElement.nativeElement.style.height = window.screen.availHeight + "px";
       this.appContainerElement.nativeElement.style.backgroundSize = "auto " + window.screen.availHeight + "px";
     }
   }
