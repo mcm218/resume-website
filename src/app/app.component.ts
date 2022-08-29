@@ -18,11 +18,12 @@ export class AppComponent implements AfterViewInit {
   education: Education = JsonData.education;
 
   @ViewChild ('app_container') appContainerElement!: ElementRef;
+  @ViewChild ('mobile_underlay') mobileUnderlayElement!: ElementRef;
 
   ngAfterViewInit () {
     // Are we on a mobile device?
     if (window.screen.width < 600) {
-      let appContainerCSS = getComputedStyle (this.appContainerElement.nativeElement);
+      this.appContainerElement.nativeElement.style.height = window.screen.availHeight + "px";
       this.appContainerElement.nativeElement.style.backgroundSize = "auto " + window.screen.availHeight + "px";
     }
   }
