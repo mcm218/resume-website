@@ -2,13 +2,15 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EducationCardComponent } from './education-card.component';
 
+import { Education } from '../models/education';
+
 describe('EducationCardComponent', () => {
   let component: EducationCardComponent;
   let fixture: ComponentFixture<EducationCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EducationCardComponent ]
+      declarations: [ EducationCardComponent ],
     })
     .compileComponents();
   });

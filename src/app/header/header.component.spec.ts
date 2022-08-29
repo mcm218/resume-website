@@ -2,18 +2,24 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
 
+import { ContactComponent } from '../contact/contact.component';
+import { EducationCardComponent } from '../education-card/education-card.component';
+import {
+  FontAwesomeModule,
+  FaIconLibrary,
+} from '@fortawesome/angular-fontawesome';
+
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
-    })
-    .compileComponents();
-  }));
+      imports: [FontAwesomeModule],
+      declarations: [HeaderComponent, ContactComponent, EducationCardComponent],
+    }).compileComponents();
 
-  beforeEach(() => {
+    
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
