@@ -25,4 +25,20 @@ describe('WipAlertComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
+  xit('should have a WIP string', () => {
+    fixture.detectChanges();
+
+    const componentElement: HTMLElement = fixture.nativeElement;
+    const sectionElement = componentElement.querySelector ('section')!;
+    // expect(sectionElement.textContent).toContain (component.item.company);
+  })
+
+  xit('should have a close button', () => {
+    fixture.detectChanges();
+
+    const componentElement: HTMLElement = fixture.nativeElement;
+    const sectionElement = componentElement.querySelector ('section')!;
+    // expect(sectionElement.textContent).toContain (component.item.company);
+  })
 });

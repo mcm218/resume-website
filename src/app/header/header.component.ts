@@ -152,6 +152,8 @@ export class HeaderComponent implements AfterViewInit {
     );
   }
 
+  // TODO: Update to be more functional, return CSS string
+  // example: this.headerElement.nativeElement.style.height = this.UpdatePropertyOnScroll (height, valuePair);
   UpdatePropertyOnScroll(
     style: any,
     propertyType: PropertyType,
