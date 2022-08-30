@@ -11,3 +11,8 @@
     padding-left: 0;
   }
 }
+
+// Not sure why, but have to set color:inherit here as well in as styles.scss for Firefox
+a {
+  color: inherit;
+}

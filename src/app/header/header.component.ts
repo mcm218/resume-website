@@ -71,19 +71,10 @@ export class HeaderComponent implements AfterViewInit {
       // Get the native element
       let headerNativeElement = this.headerElement.nativeElement;
 
-      // Grab the css values
-      const headerCSS = getComputedStyle(headerNativeElement);
-
-      // Get the padding and border values
-      const paddingY =
-        parseFloat(headerCSS.paddingTop) + parseFloat(headerCSS.paddingBottom);
-      const borderY =
-        parseFloat(headerCSS.borderTop) + parseFloat(headerCSS.borderBottom);
-
       // Store the initial header height
       this.headerValues.initialDesktopValue =
         this.headerValues.initialMobileValue =
-          headerNativeElement.offsetHeight - paddingY - borderY;
+          document.querySelector <HTMLElement> ("header")!.offsetHeight;
 
       // Update the height of the offset element
       this.offsetElement.nativeElement.style.height =
@@ -145,6 +136,17 @@ export class HeaderComponent implements AfterViewInit {
       this.backgroundColorValues,
       2
     );
+
+    // Update mobile only hide on scroll
+    if (window.innerWidth < 600) {
+      this.hideOnScrollPhoneElements.forEach((element) => {
+        element.nativeElement.style.opacity = this.UpdatePropertyOnScroll(
+          PropertyType.opacity,
+          this.opacityValues,
+          2
+        );
+      });
+    }
   }
 
   // TODO: Update to be more functional, return CSS string
