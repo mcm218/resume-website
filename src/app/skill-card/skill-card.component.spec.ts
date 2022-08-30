@@ -23,21 +23,24 @@ describe('SkillCardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  xit('should have a title', () => {
+  it('should have a title', () => {
+    component.title = "Test Title"
     fixture.detectChanges();
 
     const componentElement: HTMLElement = fixture.nativeElement;
-    const sectionElement = componentElement.querySelector ('section')!;
-    // expect(sectionElement.textContent).toContain (component.item.company);
+    const labelElement = componentElement.querySelector ('label')!;
+    expect(labelElement.textContent).toContain (component.title);
   })
 
   
   
-  xit('should have a skill value between 0 and 10', () => {
+  it('should have a skill value between 0 and 10', () => {
+    component.skill = Math.floor (Math.random () * 11);
     fixture.detectChanges();
 
     const componentElement: HTMLElement = fixture.nativeElement;
-    const sectionElement = componentElement.querySelector ('section')!;
-    // expect(sectionElement.textContent).toContain (component.item.company);
+    const progressElement = componentElement.querySelector <HTMLProgressElement> ('progress')!;
+    expect(progressElement.textContent).toContain (component.skill + "/10");
+    expect(progressElement.value).toEqual (component.skill);
   })
 });
