@@ -157,7 +157,8 @@ export class HeaderComponent implements AfterViewInit {
     speed: number = 1
   ): string {
     // Get the distance the user has scrolled so far
-    let scrollDistance = window.pageYOffset;
+    // Cap scroll distance off at 0
+    let scrollDistance = Math.max(0, window.pageYOffset);
 
     // Calculate the percent towards the final scroll distance and cap at 1
     let scrollPercent =
