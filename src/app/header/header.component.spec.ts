@@ -9,7 +9,7 @@ import {
   FaIconLibrary,
 } from '@fortawesome/angular-fontawesome';
 import { ContactMe } from '../models/contact-me';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { NO_ERRORS_SCHEMA } from '@angular/compiler';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;

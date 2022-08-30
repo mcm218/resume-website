@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/compiler';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 
@@ -10,7 +11,8 @@ describe('WipAlertComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ WipAlertComponent ],
-      imports: [ FontAwesomeModule ]
+      imports: [ FontAwesomeModule ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   });

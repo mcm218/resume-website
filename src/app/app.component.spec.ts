@@ -1,32 +1,54 @@
-import { TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/compiler';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { WipAlertComponent } from './wip-alert/wip-alert.component';
+import JsonData from '../assets/me.json';
+
+declare const viewport: any;
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent,
-        WipAlertComponent,
-        HeaderComponent
-      ],
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [AppComponent],
+      imports: [RouterTestingModule],
     }).compileComponents();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+
+    fixture.detectChanges();
   });
 
-  it(`should have as title 'Resume'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('Resume');
+  it('should create the app', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it(`should have set heights for mobile`, () => {
+    viewport.set(500, 500);
+    component.ngAfterViewInit();
+    fixture.detectChanges();
+
+    const componentElement: HTMLElement = fixture.nativeElement;
+
+    let underlayElement =
+      componentElement.querySelector<HTMLDivElement>('#mobile-underlay')!;
+    let underlayHeightString = underlayElement.style.height;
+
+    let containerElement =
+      componentElement.querySelector<HTMLDivElement>('#app-container')!;
+    let appContainerBgSizeString = containerElement.style.backgroundSize;
+
+    // TODO: every style property is returning empty...
+    expect(underlayHeightString).toBe(window.screen.availHeight + 'px');
+    expect(appContainerBgSizeString).toBe(
+      'auto ' + window.screen.availHeight + 'px'
+    );
   });
 });
