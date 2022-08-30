@@ -26,19 +26,34 @@ describe('WipAlertComponent', () => {
     expect(component).toBeTruthy();
   });
   
-  xit('should have a WIP string', () => {
-    fixture.detectChanges();
-
+  it('should have a WIP string', () => {
     const componentElement: HTMLElement = fixture.nativeElement;
-    const sectionElement = componentElement.querySelector ('section')!;
-    // expect(sectionElement.textContent).toContain (component.item.company);
+    const pElement = componentElement.querySelector ('p')!;
+    expect(pElement.textContent).toContain ('WIP');
   })
 
-  xit('should have a close button', () => {
+  it('should have a close button', () => {
     fixture.detectChanges();
 
     const componentElement: HTMLElement = fixture.nativeElement;
-    const sectionElement = componentElement.querySelector ('section')!;
-    // expect(sectionElement.textContent).toContain (component.item.company);
+    const divElement = componentElement.querySelector <HTMLDivElement> ('div')!;
+    const buttonElement = componentElement.querySelector <HTMLButtonElement> ('button')!;
+    expect(buttonElement.click).toBeTruthy ();
+
+    // Click the button to hide the element
+    buttonElement.click ();
+    fixture.detectChanges ();
+
+    expect (divElement.style.display).toBe ("none");
+
+    // Reset the display
+    divElement.style.display = "block";
+    fixture.detectChanges ();
+
+    // Test the method for hiding
+    component.close ();
+    fixture.detectChanges ();
+
+    expect (divElement.style.display).toBe ("none");
   })
 });
