@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ExperienceItem } from '../models/experience-item';
 
 import { ExperienceListComponent } from './experience-list.component';
 
@@ -23,19 +24,40 @@ describe('ExperienceListComponent', () => {
     expect(component).toBeTruthy();
   });
   
-  xit('should have a title', () => {
+  it('should have a title', () => {
+    component.role.title = "Test Title"
     fixture.detectChanges();
 
     const componentElement: HTMLElement = fixture.nativeElement;
-    const sectionElement = componentElement.querySelector ('section')!;
-    // expect(sectionElement.textContent).toContain (component.item.company);
+    const h2Element = componentElement.querySelector ('h2')!;
+    expect(h2Element.textContent).toContain (component.role.title);
   })
   
-  xit('should have a list of experience cards', () => {
+  
+  it('should have a list of experience cards', () => {
+    component.role.experience = new Array <ExperienceItem> ();
+    component.role.experience.push (new ExperienceItem ());
+    component.role.experience.push (new ExperienceItem ());
+    component.role.experience.push (new ExperienceItem ());
+    component.role.experience.push (new ExperienceItem ());
+
     fixture.detectChanges();
 
     const componentElement: HTMLElement = fixture.nativeElement;
-    const sectionElement = componentElement.querySelector ('section')!;
-    // expect(sectionElement.textContent).toContain (component.item.company);
+    const ulElement = componentElement.querySelector <HTMLUListElement> ('ul')!;
+    expect(ulElement).toBeTruthy ();
+    expect(ulElement.children.length).toEqual (component.role.experience.length);
+  })
+
+  
+  it('should have no notes', () => {
+    component.role.experience = new Array <ExperienceItem> ();
+    
+    fixture.detectChanges();
+
+    const componentElement: HTMLElement = fixture.nativeElement;
+    const ulElement = componentElement.querySelector <HTMLUListElement> ('ul')!;
+    expect(ulElement).toBeTruthy ();
+    expect (ulElement.children.length).toEqual (0);
   })
 });
