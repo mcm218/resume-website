@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Skill } from '../models/skill';
 
 import { SkillsListComponent } from './skills-list.component';
 
@@ -23,19 +24,39 @@ describe('SkillsListComponent', () => {
     expect(component).toBeTruthy();
   });
   
-  xit('should have a title', () => {
+  it('should have a title', () => {
+    component.title = "Test Title";
     fixture.detectChanges();
 
     const componentElement: HTMLElement = fixture.nativeElement;
-    const sectionElement = componentElement.querySelector ('section')!;
-    // expect(sectionElement.textContent).toContain (component.item.company);
+    const h3Element = componentElement.querySelector ('h3')!;
+    expect(h3Element.textContent).toContain (component.title);
   })
   
-  xit('should have a list of skills', () => {
+  it('should have a list of skills', () => {
+    component.skills = new Array <Skill> ();
+    component.skills.push (new Skill ());
+    component.skills.push (new Skill ());
+    component.skills.push (new Skill ());
+    component.skills.push (new Skill ());
+
     fixture.detectChanges();
 
     const componentElement: HTMLElement = fixture.nativeElement;
-    const sectionElement = componentElement.querySelector ('section')!;
-    // expect(sectionElement.textContent).toContain (component.item.company);
+    const ulElement = componentElement.querySelector <HTMLUListElement> ('ul')!;
+    expect(ulElement).toBeTruthy ();
+    expect(ulElement.children.length).toEqual (component.skills.length);
+  })
+
+  
+  it('should have no notes', () => {
+    component.skills = new Array <Skill> ();
+    
+    fixture.detectChanges();
+
+    const componentElement: HTMLElement = fixture.nativeElement;
+    const ulElement = componentElement.querySelector <HTMLUListElement> ('ul')!;
+    expect(ulElement).toBeTruthy ();
+    expect (ulElement.children.length).toEqual (0);
   })
 });
