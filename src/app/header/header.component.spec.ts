@@ -8,6 +8,8 @@ import {
   FontAwesomeModule,
   FaIconLibrary,
 } from '@fortawesome/angular-fontawesome';
+import { ContactMe } from '../models/contact-me';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -16,10 +18,10 @@ describe('HeaderComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       imports: [FontAwesomeModule],
-      declarations: [HeaderComponent, ContactComponent, EducationCardComponent],
+      declarations: [HeaderComponent],
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 
-    
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -28,68 +30,54 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  
-  xit('should have a title', () => {
+
+  it('should have a title', () => {
+    component.title = 'Test Title';
     fixture.detectChanges();
 
     const componentElement: HTMLElement = fixture.nativeElement;
-    const sectionElement = componentElement.querySelector ('section')!;
-    // expect(sectionElement.textContent).toContain (component.item.company);
-  })
-  
-  xit('should have a subtitle', () => {
+    const h1Element = componentElement.querySelector('h1')!;
+    expect(h1Element.textContent).toContain(component.title);
+  });
+
+  it('should have a subtitle', () => {
+    component.subtitle = 'Test Subtitle';
     fixture.detectChanges();
 
     const componentElement: HTMLElement = fixture.nativeElement;
-    const sectionElement = componentElement.querySelector ('section')!;
-    // expect(sectionElement.textContent).toContain (component.item.company);
-  })
-  
-  xit('should have a contact component', () => {
-    fixture.detectChanges();
+    const h2Element = componentElement.querySelector('h2')!;
+    expect(h2Element.textContent).toContain(component.subtitle);
+  });
 
-    const componentElement: HTMLElement = fixture.nativeElement;
-    const sectionElement = componentElement.querySelector ('section')!;
-    // expect(sectionElement.textContent).toContain (component.item.company);
-  })
-  
-  xit('should have an education card component', () => {
-    fixture.detectChanges();
-
-    const componentElement: HTMLElement = fixture.nativeElement;
-    const sectionElement = componentElement.querySelector ('section')!;
-    // expect(sectionElement.textContent).toContain (component.item.company);
-  })
-  
   xit('height should adjust with scroll value', () => {
     fixture.detectChanges();
 
     const componentElement: HTMLElement = fixture.nativeElement;
-    const sectionElement = componentElement.querySelector ('section')!;
+    const sectionElement = componentElement.querySelector('section')!;
     // expect(sectionElement.textContent).toContain (component.item.company);
-  })
-  
+  });
+
   xit('background color should adjust with scroll value', () => {
     fixture.detectChanges();
 
     const componentElement: HTMLElement = fixture.nativeElement;
-    const sectionElement = componentElement.querySelector ('section')!;
+    const sectionElement = componentElement.querySelector('section')!;
     // expect(sectionElement.textContent).toContain (component.item.company);
-  })
-  
+  });
+
   xit('opacity should adjust with scroll value', () => {
     fixture.detectChanges();
 
     const componentElement: HTMLElement = fixture.nativeElement;
-    const sectionElement = componentElement.querySelector ('section')!;
+    const sectionElement = componentElement.querySelector('section')!;
     // expect(sectionElement.textContent).toContain (component.item.company);
-  })
-  
+  });
+
   xit('font color should adjust with scroll value', () => {
     fixture.detectChanges();
 
     const componentElement: HTMLElement = fixture.nativeElement;
-    const sectionElement = componentElement.querySelector ('section')!;
+    const sectionElement = componentElement.querySelector('section')!;
     // expect(sectionElement.textContent).toContain (component.item.company);
-  })
+  });
 });
