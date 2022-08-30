@@ -172,5 +172,5 @@ describe('HeaderComponent', () => {
     );
   });
 
-  // #TODO: test font size,opacity, color, and background color
+  // #TODO: test font size, opacity, color, and background color
 });
