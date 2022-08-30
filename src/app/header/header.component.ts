@@ -78,8 +78,7 @@ export class HeaderComponent implements AfterViewInit {
       const paddingY =
         parseFloat(headerCSS.paddingTop) + parseFloat(headerCSS.paddingBottom);
       const borderY =
-        parseFloat(headerCSS.borderTop) +
-        parseFloat(headerCSS.borderBottom);
+        parseFloat(headerCSS.borderTop) + parseFloat(headerCSS.borderBottom);
 
       // Store the initial header height
       this.headerValues.initialDesktopValue =
@@ -91,45 +90,43 @@ export class HeaderComponent implements AfterViewInit {
         headerNativeElement.offsetHeight.toString() + 'px';
 
       // Update font colors
-      this.UpdatePropertyOnScroll(
-        this.headerElement.nativeElement.style,
+      this.headerElement.nativeElement.style.color = this.UpdatePropertyOnScroll(
         PropertyType.color,
         this.colorValues
       );
 
       // Set the final scroll distance
-      this.finalScrollDistance = (screen.availHeight * 1) * 0.75;
+      this.finalScrollDistance = screen.availHeight * 1 * 0.75;
 
       this.isInitialized = true;
     }
   }
 
   @HostListener('window:scroll', ['$event'])
-  onScroll(event: any) {
-    if (this.isInitialized == false) return;
+  onScroll(event: any): boolean {
+    if (this.isInitialized == false) return false;
 
     this.UpdateScrollValues();
+
+    return true;
   }
 
   UpdateScrollValues() {
     // Update height
-    this.UpdatePropertyOnScroll(
-      this.headerElement.nativeElement.style,
+    this.headerElement.nativeElement.style.height = this.UpdatePropertyOnScroll(
       PropertyType.height,
       this.headerValues
     );
 
     // Update font colors
-    this.UpdatePropertyOnScroll(
-      this.headerElement.nativeElement.style,
+    this.headerElement.nativeElement.style.color = this.UpdatePropertyOnScroll(
       PropertyType.color,
       this.colorValues
     );
 
     // Update transparency of any hideOnScroll elements
     this.hideOnScrollElements.forEach((element) => {
-      this.UpdatePropertyOnScroll(
-        element.nativeElement.style,
+      element.nativeElement.style.opacity = this.UpdatePropertyOnScroll(
         PropertyType.opacity,
         this.opacityValues,
         2
@@ -137,15 +134,13 @@ export class HeaderComponent implements AfterViewInit {
     });
 
     // Update font size
-    this.UpdatePropertyOnScroll(
-      this.titleElement.nativeElement.style,
+    this.titleElement.nativeElement.style.fontSize = this.UpdatePropertyOnScroll(
       PropertyType.fontSize,
       this.titleValues
     );
 
     // Update background
-    this.UpdatePropertyOnScroll(
-      this.headerElement.nativeElement.style,
+    this.headerElement.nativeElement.style.background = this.UpdatePropertyOnScroll(
       PropertyType.background,
       this.backgroundColorValues,
       2
@@ -155,11 +150,10 @@ export class HeaderComponent implements AfterViewInit {
   // TODO: Update to be more functional, return CSS string
   // example: this.headerElement.nativeElement.style.height = this.UpdatePropertyOnScroll (height, valuePair);
   UpdatePropertyOnScroll(
-    style: any,
     propertyType: PropertyType,
     valuePair: OnScrollValuePair<any>,
     speed: number = 1
-  ) {
+  ): string {
     // Get the distance the user has scrolled so far
     let scrollDistance = window.pageYOffset;
 
@@ -168,7 +162,7 @@ export class HeaderComponent implements AfterViewInit {
       speed * Math.min(scrollDistance / this.finalScrollDistance, 1);
 
     // Is this a mobile device?
-    let isMobile = screen.width < 600;
+    let isMobile = window.innerWidth < 600;
 
     let newValue: any;
 
@@ -212,25 +206,20 @@ export class HeaderComponent implements AfterViewInit {
     // Update the property
     switch (propertyType) {
       case PropertyType.height:
-        style.height = newValue.toString() + 'px';
-        break;
+        return newValue.toString() + 'px';
       case PropertyType.fontSize:
-        style.fontSize = newValue.toString() + 'rem';
-        break;
+        return newValue.toString() + 'rem';
       case PropertyType.color:
-        style.color = `rgb(${newValue[0]},${newValue[1]},${newValue[2]})`;
-        break;
+        return `rgb(${newValue[0]},${newValue[1]},${newValue[2]})`;
       case PropertyType.opacity:
-        style.opacity = newValue.toString();
-        break;
+        return newValue.toString();
       case PropertyType.background:
-        style.background = `rgba(${newValue[0]},${newValue[1]},${newValue[2]}, ${newValue[3]})`;
-        break;
+        return `rgba(${newValue[0]},${newValue[1]},${newValue[2]}, ${newValue[3]})`;
     }
   }
 }
 
-enum PropertyType {
+export enum PropertyType {
   height,
   fontSize,
   color,
