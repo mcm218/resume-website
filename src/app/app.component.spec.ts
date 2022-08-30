@@ -45,7 +45,6 @@ describe('AppComponent', () => {
       componentElement.querySelector<HTMLDivElement>('#app-container')!;
     let appContainerBgSizeString = containerElement.style.backgroundSize;
 
-    // TODO: every style property is returning empty...
     expect(underlayHeightString).toBe(window.screen.availHeight + 'px');
     expect(appContainerBgSizeString).toBe(
       'auto ' + window.screen.availHeight + 'px'
