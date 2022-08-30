@@ -72,19 +72,20 @@ export class HeaderComponent implements AfterViewInit {
       let headerNativeElement = this.headerElement.nativeElement;
 
       // Store the initial header height
+      // Adding 50 extra until I can find cause of issue where parts of header get off after scrolling
+      this.headerValues.initialMobileValue =
+        document.querySelector<HTMLElement>('header')!.offsetHeight + 50;
+
       this.headerValues.initialDesktopValue =
-        this.headerValues.initialMobileValue =
-          document.querySelector <HTMLElement> ("header")!.offsetHeight;
+        document.querySelector<HTMLElement>('header')!.offsetHeight;
 
       // Update the height of the offset element
       this.offsetElement.nativeElement.style.height =
         headerNativeElement.offsetHeight.toString() + 'px';
 
       // Update font colors
-      this.headerElement.nativeElement.style.color = this.UpdatePropertyOnScroll(
-        PropertyType.color,
-        this.colorValues
-      );
+      this.headerElement.nativeElement.style.color =
+        this.UpdatePropertyOnScroll(PropertyType.color, this.colorValues);
 
       // Set the final scroll distance
       this.finalScrollDistance = screen.availHeight * 1 * 0.75;
@@ -125,17 +126,16 @@ export class HeaderComponent implements AfterViewInit {
     });
 
     // Update font size
-    this.titleElement.nativeElement.style.fontSize = this.UpdatePropertyOnScroll(
-      PropertyType.fontSize,
-      this.titleValues
-    );
+    this.titleElement.nativeElement.style.fontSize =
+      this.UpdatePropertyOnScroll(PropertyType.fontSize, this.titleValues);
 
     // Update background
-    this.headerElement.nativeElement.style.background = this.UpdatePropertyOnScroll(
-      PropertyType.background,
-      this.backgroundColorValues,
-      2
-    );
+    this.headerElement.nativeElement.style.background =
+      this.UpdatePropertyOnScroll(
+        PropertyType.background,
+        this.backgroundColorValues,
+        2
+      );
 
     // Update mobile only hide on scroll
     if (window.innerWidth < 600) {
