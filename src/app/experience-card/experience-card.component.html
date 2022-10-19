@@ -8,7 +8,9 @@
         <span class="location" style="float: right;">{{ this.item.location }}</span>
     </div>
     <ul>
-        <li *ngFor="let description of this.item.notes">{{ description }}</li>
+        <li *ngFor="let description of this.item.notes">
+            <div [innerHTML]="description"></div>
+        </li>
     </ul>
 </section>
 
