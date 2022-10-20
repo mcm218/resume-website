@@ -112,6 +112,7 @@
           "location": "Charlotte, NC",
           "startDate": "January 2022",
           "endDate": "August 2022",
+          "filterableItems": 504,
           "notes": [
             "Lead the design and development of client's global OAuth architecture across multiple Salesforce Experience sites creating a single user experience",
             "Worked with a client to create a developer portal allowing customers to learn and test the client's APIs through their Salesforce Experience site"
@@ -123,6 +124,7 @@
           "location": "Charlotte, NC",
           "startDate": "January 2020",
           "endDate": "December 2021",
+          "filterableItems": 501,
           "notes": [
             "Lead the Android development for a client's Xamarin mobile app and released the app to both iOS and Android platforms within 6 months",
             "Supervised and taught Xamarin and C# to interns throughout their onboarding process",
@@ -143,6 +145,7 @@
           "location": "",
           "startDate": "",
           "endDate": "",
+          "filterableItems": 1008,
           "notes": [
             "Developed a bot that utilized Discord's APIs to allow users to play music from YouTube within the server's voice channels via text commands",
             "Designed web client to allow for easier manipulation of a Discord server's music queue and watch synced music videos in groups"
@@ -154,6 +157,7 @@
           "location": "",
           "startDate": "",
           "endDate": "",
+          "filterableItems": 3,
           "notes": [
             "<a href=\"https://ldjam.com/events/ludum-dare/51/thirsty-vampire\">Ludum Dare 51 - Theme: \" Every 10 Seconds\"</a> - Third game jam overall and the first one I did solo. For this entry, I decided to make a top down game where you played as a vampire who had to suck blood every 10 seconds to stay alive. The twist was that you had to pickpocket your victim and check their blood donor card to ensure they had a compatitible blood type. Overall, I was happy with this game jam and how it turned out. Currently working on a mobile version of the game to release on both Andorid and iOS.",
             "GMTK 2022 - Theme: \"Roll of the Dice \" - My second game jam and again I was the lead programmer and project lead. This time, we had a group with more writing experience, so we wanted to lean into that with a visual novel that follows a chimp trying to escape a jungle science facility. Unfortunately, we ended up not having enough time so we didn't have as many random encounters and the overall combat was weak.",
@@ -166,6 +170,7 @@
           "location": "",
           "startDate": "May 2018",
           "endDate": "November 2019",
+          "filterableItems": 2048,
           "notes": [
             "Designed UI and systems to allow users to create new entries based on prompts or create reflections based on previous entries",
             "Developed the app using Flutter and launched for both iOS and Android",
@@ -178,6 +183,7 @@
           "location": "",
           "startDate": "",
           "endDate": "",
+          "filterableItems": 4096,
           "notes": [
             "Built the computer vision system using C++ and OpenCV for an automated nerf gun which allowed it to track and fire at moving targets using multiple fire modes"
           ]
@@ -188,6 +194,7 @@
           "location": "",
           "startDate": "",
           "endDate": "",
+          "filterableItems": 4096,
           "notes": [
             "Lead the development of the computer vision system for recognizing the chess pieces and the board",
             "Worked with one developer to design the system for controlling the motors used to move the grabber, similar to systems used in 3D printers"

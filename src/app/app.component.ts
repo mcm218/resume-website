@@ -8,23 +8,25 @@ import { SkillBlock } from './models/skill-block';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements AfterViewInit {
   title = 'Resume';
-  experienceList: Array <Role> = JsonData.experience;
-  skillsLists: Array <SkillBlock> = JsonData.skills;
+  experienceList: Array<Role> = JsonData.experience;
+  skillsLists: Array<SkillBlock> = JsonData.skills;
   contact: ContactMe = JsonData.contact;
   education: Education = JsonData.education;
 
-  @ViewChild ('app_container') appContainerElement!: ElementRef;
-  @ViewChild ('mobile_underlay') mobileUnderlayElement!: ElementRef;
+  @ViewChild('app_container') appContainerElement!: ElementRef;
+  @ViewChild('mobile_underlay') mobileUnderlayElement!: ElementRef;
 
-  ngAfterViewInit () {
+  ngAfterViewInit() {
     // Are we on a mobile device?
     if (window.innerWidth < 600) {
-      this.mobileUnderlayElement.nativeElement.style.height = window.screen.availHeight + "px";
-      this.appContainerElement.nativeElement.style.backgroundSize = "auto " + window.screen.availHeight + "px";
+      this.mobileUnderlayElement.nativeElement.style.height =
+        window.screen.availHeight + 'px';
+      this.appContainerElement.nativeElement.style.backgroundSize =
+        'auto ' + window.screen.availHeight + 'px';
     }
   }
 }

@@ -1,0 +1,15 @@
+export enum FilterItem {
+  CSharp = 0x1,
+  Unity = 0x1 << 1,
+  Xamarin = 0x1 << 2,
+  Salesforce = 0x1 << 3,
+  Angular = 0x1 << 4,
+  HTML = 0x1 << 5,
+  CSS = 0x1 << 6,
+  JavaScript = 0x1 << 7,
+  TypeScript = 0x1 << 8,
+  NodeJS = 0x1 << 9,
+  React = 0x1 << 10,
+  Flutter = 0x1 << 11,
+  CPlusPlus = 0x1 << 12,
+}

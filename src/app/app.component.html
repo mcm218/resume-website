@@ -1,5 +1,5 @@
 <div #app_container id="app-container">
-  <!-- <app-wip-alert></app-wip-alert> -->
+  <app-wip-alert></app-wip-alert>
   <div #mobile_underlay id="mobile-underlay"></div>
   <div id="primary-column">
     <section class="main-header">
@@ -14,7 +14,7 @@
       <app-experience-list [role]="item"> </app-experience-list>
     </section>
     <section id="skills-section">
-      <h2 style="text-align: center;">Skills</h2>
+      <h2 style="text-align: center">Skills</h2>
       <div id="skills-body">
         <article *ngFor="let skills of skillsLists">
           <app-skills-list
@@ -23,7 +23,7 @@
           ></app-skills-list>
         </article>
       </div>
-    </section> 
+    </section>
   </div>
 </div>
 <router-outlet></router-outlet>
