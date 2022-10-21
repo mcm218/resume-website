@@ -4,7 +4,9 @@ import {
   faAngular,
   faCss3,
   faHtml5,
+  faJs,
   faJsSquare,
+  faNode,
   faNodeJs,
   faReact,
   faSalesforce,
@@ -15,7 +17,9 @@ import {
   faFill,
   faFillDrip,
 } from '@fortawesome/free-solid-svg-icons';
+import { FilterIconPair, FilterService } from '../filter.service';
 import { ExperienceItem } from '../models/experience-item';
+import { FilterItem } from '../models/filter-item';
 
 @Component({
   selector: 'app-experience-card',
@@ -23,63 +27,132 @@ import { ExperienceItem } from '../models/experience-item';
   styleUrls: ['./experience-card.component.scss'],
 })
 export class ExperienceCardComponent implements OnInit {
+  noIcon: IconProp = FilterService.NoIcon;
+
   @Input() item: ExperienceItem = new ExperienceItem();
 
-  filterableItems: Array<FilterIconPair> = new Array<FilterIconPair>();
+  filterObjects: Array<FilterIconPair> = new Array<FilterIconPair>();
 
-  constructor() {}
+  constructor(public filterService: FilterService) {}
 
   ngOnInit() {
     console.log(this.item.filterableItems.toString(2));
-    if ((this.item.filterableItems & 0x1) != 0) {
-      this.filterableItems.push(new FilterIconPair('C#', faFill));
+    if ((this.item.filterableItems & FilterItem.CSharp) != 0) {
+      this.filterObjects.push(
+        new FilterIconPair(
+          FilterItem.CSharp,
+          'C#',
+          this.noIcon,
+          false,
+          'csharp'
+        )
+      );
     }
-    if ((this.item.filterableItems & (0x1 << 1)) != 0) {
-      this.filterableItems.push(new FilterIconPair('Unity', faUnity));
+    if ((this.item.filterableItems & FilterItem.Unity) != 0) {
+      this.filterObjects.push(
+        new FilterIconPair(FilterItem.Unity, 'Unity', faUnity)
+      );
     }
-    if ((this.item.filterableItems & (0x1 << 2)) != 0) {
-      this.filterableItems.push(new FilterIconPair('Xamarin', faFill));
+    if ((this.item.filterableItems & FilterItem.Xamarin) != 0) {
+      this.filterObjects.push(
+        new FilterIconPair(
+          FilterItem.Xamarin,
+          'Xamarin',
+          this.noIcon,
+          false,
+          'xamarin'
+        )
+      );
     }
-    if ((this.item.filterableItems & (0x1 << 3)) != 0) {
-      this.filterableItems.push(new FilterIconPair('Salesforce', faSalesforce));
+    if ((this.item.filterableItems & FilterItem.Salesforce) != 0) {
+      this.filterObjects.push(
+        new FilterIconPair(FilterItem.Salesforce, 'Salesforce', faSalesforce)
+      );
     }
-    if ((this.item.filterableItems & (0x1 << 4)) != 0) {
-      this.filterableItems.push(new FilterIconPair('Angular', faAngular));
+    if ((this.item.filterableItems & FilterItem.Angular) != 0) {
+      this.filterObjects.push(
+        new FilterIconPair(FilterItem.Angular, 'Angular', faAngular)
+      );
     }
-    if ((this.item.filterableItems & (0x1 << 5)) != 0) {
-      this.filterableItems.push(new FilterIconPair('HTML', faHtml5));
+    if ((this.item.filterableItems & FilterItem.HTML) != 0) {
+      this.filterObjects.push(
+        new FilterIconPair(FilterItem.HTML, 'HTML', faHtml5)
+      );
     }
-    if ((this.item.filterableItems & (0x1 << 6)) != 0) {
-      this.filterableItems.push(new FilterIconPair('CSS', faCss3));
+    if ((this.item.filterableItems & FilterItem.CSS) != 0) {
+      this.filterObjects.push(
+        new FilterIconPair(FilterItem.CSS, 'CSS', faCss3)
+      );
     }
-    if ((this.item.filterableItems & (0x1 << 7)) != 0) {
-      this.filterableItems.push(new FilterIconPair('JavaScript', faJsSquare));
+    if ((this.item.filterableItems & FilterItem.JavaScript) != 0) {
+      this.filterObjects.push(
+        new FilterIconPair(FilterItem.JavaScript, 'JavaScript', faJs)
+      );
     }
-    if ((this.item.filterableItems & (0x1 << 8)) != 0) {
-      this.filterableItems.push(new FilterIconPair('TypeScript', faFill));
+    if ((this.item.filterableItems & FilterItem.TypeScript) != 0) {
+      this.filterObjects.push(
+        new FilterIconPair(
+          FilterItem.TypeScript,
+          'TypeScript',
+          this.noIcon,
+          false,
+          'typescript'
+        )
+      );
     }
-    if ((this.item.filterableItems & (0x1 << 9)) != 0) {
-      this.filterableItems.push(new FilterIconPair('NodeJS', faNodeJs));
+    if ((this.item.filterableItems & FilterItem.NodeJS) != 0) {
+      this.filterObjects.push(
+        new FilterIconPair(FilterItem.NodeJS, 'NodeJS', faNode)
+      );
     }
-    if ((this.item.filterableItems & (0x1 << 10)) != 0) {
-      this.filterableItems.push(new FilterIconPair('React', faReact));
+    if ((this.item.filterableItems & FilterItem.React) != 0) {
+      this.filterObjects.push(
+        new FilterIconPair(FilterItem.React, 'React', faReact)
+      );
     }
-    if ((this.item.filterableItems & (0x1 << 11)) != 0) {
-      this.filterableItems.push(new FilterIconPair('Flutter', faFill));
+    if ((this.item.filterableItems & FilterItem.Flutter) != 0) {
+      this.filterObjects.push(
+        new FilterIconPair(
+          FilterItem.Flutter,
+          'Flutter',
+          this.noIcon,
+          false,
+          'flutter'
+        )
+      );
     }
-    if ((this.item.filterableItems & (0x1 << 12)) != 0) {
-      this.filterableItems.push(new FilterIconPair('C/C++', faFill));
+    if ((this.item.filterableItems & FilterItem.CPlusPlus) != 0) {
+      this.filterObjects.push(
+        new FilterIconPair(
+          FilterItem.CPlusPlus,
+          'C/C++',
+          this.noIcon,
+          false,
+          'cplusplus'
+        )
+      );
     }
-    console.log(this.filterableItems);
+    console.log(this.filterObjects);
   }
-}
 
-class FilterIconPair {
-  filterName: string = '';
-  icon: IconProp = faDeafness;
+  ToggleFilterItem(filtereableItem: FilterIconPair) {
+    FilterService.ToggleFilterItem(filtereableItem);
+  }
 
-  constructor(a: string, b: IconProp) {
-    this.filterName = a;
-    this.icon = b;
+  CurrentFilters() {
+    return FilterService.CurrentFilters;
+  }
+
+  CheckFlag(item: FilterIconPair): boolean {
+    return (FilterService.CurrentFilters & item.value) != 0;
+  }
+
+  IsInFilter(): boolean {
+    // is the filter empty? If so, return true
+    if (FilterService.CurrentFilters == 0) {
+      return true;
+    }
+    // Otherwise, check if the filter bits for this card are contained in the filter
+    return (FilterService.CurrentFilters & this.item.filterableItems) > 0;
   }
 }

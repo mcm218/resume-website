@@ -1,4 +1,7 @@
-<section class="experience-card">
+<section
+  class="experience-card"
+  [ngClass]="IsInFilter() ? 'displayed' : 'hidden'"
+>
   <div class="experience-primary">
     <h3 style="display: inline">{{ this.item.role }}</h3>
     <p class="company" style="float: right" *ngIf="this.item.company">
@@ -14,11 +17,23 @@
     </span>
     <span class="location" style="float: right">{{ this.item.location }}</span>
   </div>
-  <div>
-    <span *ngFor="let item of this.filterableItems">
-      <fa-icon class="icon" [icon]="item.icon" size="2x">{{
-        item.filterName
-      }}</fa-icon>
+  <div style="display: flex; align-items: center">
+    <span
+      class="filterItem"
+      (click)="this.ToggleFilterItem(item)"
+      [ngClass]="CheckFlag(item) ? 'filterItem-selected' : 'filterItem'"
+      *ngFor="let item of this.filterObjects"
+      [matTooltip]="item.filterName"
+    >
+      <fa-icon
+        *ngIf="item.isFA; else elseBlock"
+        [icon]="item.faIcon"
+        size="2x"
+        >{{ item.filterName }}</fa-icon
+      >
+      <ng-template #elseBlock>
+        <app-svg-renderer [title]="item.iconURI"></app-svg-renderer>
+      </ng-template>
     </span>
   </div>
   <ul>

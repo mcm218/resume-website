@@ -14,6 +14,8 @@ import { PhonePipePipe } from './phone-pipe.pipe';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WipAlertComponent } from './wip-alert/wip-alert.component';
+import { SvgRendererComponent } from './svg-renderer/svg-renderer.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -26,15 +28,17 @@ import { WipAlertComponent } from './wip-alert/wip-alert.component';
     SkillCardComponent,
     EducationCardComponent,
     PhonePipePipe,
-    WipAlertComponent
+    WipAlertComponent,
+    SvgRendererComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTooltipModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
