@@ -9,8 +9,4 @@ export class SvgRendererComponent {
   @Input() title: string = '';
 
   constructor() {}
-
-  ngOnInit(): void {
-    console.log(this.title);
-  }
 }

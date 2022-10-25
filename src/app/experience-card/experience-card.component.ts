@@ -36,7 +36,6 @@ export class ExperienceCardComponent implements OnInit {
   constructor(public filterService: FilterService) {}
 
   ngOnInit() {
-    console.log(this.item.filterableItems.toString(2));
     if ((this.item.filterableItems & FilterItem.CSharp) != 0) {
       this.filterObjects.push(
         new FilterIconPair(
@@ -132,7 +131,6 @@ export class ExperienceCardComponent implements OnInit {
         )
       );
     }
-    console.log(this.filterObjects);
   }
 
   ToggleFilterItem(filtereableItem: FilterIconPair) {

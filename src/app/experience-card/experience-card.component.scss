@@ -42,7 +42,7 @@ li:nth-child(even) {
 }
 
 li:nth-child(odd) {
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .filterItem,
@@ -52,26 +52,27 @@ li:nth-child(odd) {
 }
 
 .hidden {
-  color: grey;
+  @include alpha(color, --white, 0.7);
   transition: color 0.5s ease;
+
   div h3 {
-    color: grey;
+    @include alpha(color, --blue, 0.7);
     transition: color 0.5s ease;
   }
 
   li:nth-child(odd) {
-    color: rgb(121, 123, 155);
+    @include alpha(color, --grayblue, 0.7);
     transition: color 0.5s ease;
   }
 
   .filterItem {
-    color: rgb(80, 80, 80);
+    @include alpha(color, --gray, 0.7);
     transition: color 0.5s ease;
     transition: color 0.5s ease;
   }
 
   .filterItem:hover {
-    color: rgb(50, 50, 50);
+    @include alpha(color, --gray, 0.4);
     transition: color 0.25s ease;
   }
 
@@ -93,16 +94,16 @@ li:nth-child(odd) {
   }
 
   li:nth-child(odd) {
-    color: rgb(221, 223, 255);
+    color: var(--grayblue);
     transition: color 0.5s ease;
   }
 
   .filterItem {
-    color: grey;
+    color: var(--gray);
     transition: color 0.5s ease;
   }
   .filterItem:hover {
-    color: rgb(80, 80, 80);
+    @include alpha(color, --gray, 0.7);
     transition: color 0.25s ease;
   }
 

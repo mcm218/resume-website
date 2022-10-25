@@ -46,3 +46,10 @@ Thumbs.db
 
 # Angular stuff
 .angular
+
+# Firebase
+.firebase
+*-debug.log
+.runtimeconfig.json
+
+src/environments

@@ -1,3 +1,15 @@
+@mixin alpha($property, $color-variable, $opacity) {
+  $color-variable-h: var(#{$color-variable + "-h"});
+  $color-variable-s: var(#{$color-variable + "-s"});
+  $color-variable-l: var(#{$color-variable + "-l"});
+  #{$property}: hsla(
+    $color-variable-h,
+    $color-variable-s,
+    $color-variable-l,
+    $opacity
+  );
+}
+
 #app-container {
   background-image: url("../assets/headerBackground.jpg");
   background-size: 100% auto;
@@ -122,4 +134,29 @@ a:visited {
       background-image: url("../assets/phoneBackground@2x.jpg");
     }
   }
+}
+
+.filterItem,
+.filterItem-selected {
+  margin: 0 5px;
+  fill: currentColor;
+}
+
+.filterItem {
+  color: var(--gray);
+  transition: color 0.5s ease;
+}
+.filterItem:hover {
+  @include alpha(color, --gray, 0.75);
+  transition: color 0.25s ease;
+}
+
+.filterItem-selected {
+  color: var(--blue);
+  transition: color 0.5s ease;
+}
+
+.filterItem-selected:hover {
+  @include alpha(color, --blue, 0.75);
+  transition: color 0.25s ease;
 }

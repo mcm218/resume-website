@@ -2,10 +2,15 @@
 @import url("./assets/Montserrat/Montserrat.css");
 
 @mixin alpha($property, $color-variable, $opacity) {
-  $color-variable-h: var(#{$color-variable+'-h'});
-  $color-variable-s: var(#{$color-variable+'-s'});
-  $color-variable-l: var(#{$color-variable+'-l'});
-  #{$property}: hsla($color-variable-h, $color-variable-s, $color-variable-l, $opacity);
+  $color-variable-h: var(#{$color-variable + "-h"});
+  $color-variable-s: var(#{$color-variable + "-s"});
+  $color-variable-l: var(#{$color-variable + "-l"});
+  #{$property}: hsla(
+    $color-variable-h,
+    $color-variable-s,
+    $color-variable-l,
+    $opacity
+  );
 }
 
 html,
@@ -23,6 +28,21 @@ body {
   --blue-h: 195;
   --blue-s: 100%;
   --blue-l: 49%;
+
+  --white: hsl(0, 0%, 100%);
+  --white-h: 0;
+  --white-s: 0%;
+  --white-l: 100%;
+
+  --gray: hsl(0, 0%, 50%);
+  --gray-h: 0;
+  --gray-s: 0%;
+  --gray-l: 50%;
+
+  --grayblue: hsl(195, 85%, 80%);
+  --grayblue-h: 195;
+  --grayblue-s: 85%;
+  --grayblue-l: 80%;
 
   --green: #00f5d4;
   --red: #e76f51;
@@ -103,7 +123,8 @@ ul {
   padding-left: 0;
 }
 
-a, a:-webkit-any-link {
+a,
+a:-webkit-any-link {
   color: inherit;
 }
 
@@ -145,4 +166,3 @@ progress::-webkit-progress-bar {
 ::-webkit-scrollbar-thumb:hover {
   @include alpha(background, --blue, 0.7);
 }
-

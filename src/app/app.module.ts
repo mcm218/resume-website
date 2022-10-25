@@ -16,6 +16,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WipAlertComponent } from './wip-alert/wip-alert.component';
 import { SvgRendererComponent } from './svg-renderer/svg-renderer.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import {
+  provideAnalytics,
+  getAnalytics,
+  ScreenTrackingService,
+  UserTrackingService,
+} from '@angular/fire/analytics';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -37,8 +46,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     FontAwesomeModule,
     BrowserAnimationsModule,
     MatTooltipModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    // provideAnalytics(() => getAnalytics()),
+    provideFirestore(() => getFirestore()),
   ],
-  providers: [],
+  providers: [ScreenTrackingService, UserTrackingService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
