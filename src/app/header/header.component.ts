@@ -91,6 +91,8 @@ export class HeaderComponent implements AfterViewInit {
       this.finalScrollDistance = screen.availHeight * 1 * 0.75;
 
       this.isInitialized = true;
+
+      console.log (this.headerValues.initialMobileValue)
     }
   }
 
