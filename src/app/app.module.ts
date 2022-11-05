@@ -25,6 +25,7 @@ import {
   UserTrackingService,
 } from '@angular/fire/analytics';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { FilterToolbarComponent } from './filter-toolbar/filter-toolbar.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
     PhonePipePipe,
     WipAlertComponent,
     SvgRendererComponent,
+    FilterToolbarComponent,
   ],
   imports: [
     BrowserModule,

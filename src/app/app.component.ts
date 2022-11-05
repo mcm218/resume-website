@@ -43,11 +43,17 @@ export class AppComponent implements AfterViewInit {
   education: Education = JsonData.education;
 
   filterObjects: Array<FilterIconPair> = new Array<FilterIconPair>();
+  filterIsExpanded: boolean = true;
 
   @ViewChild('app_container') appContainerElement!: ElementRef;
   @ViewChild('mobile_underlay') mobileUnderlayElement!: ElementRef;
 
   constructor(firestore: Firestore) {
+    
+    if (window.innerWidth < 600) {
+      this.filterIsExpanded = false;
+    }
+
     const docRef = doc(firestore, 'resumes/krtYPHqlrLLVzPVV9R69'); //collection(firestore, 'resumes');
     this.item$ = docData(docRef);
     this.item$.subscribe((value) => {
@@ -55,7 +61,6 @@ export class AppComponent implements AfterViewInit {
       this.skillsLists = value.skills;
       this.contact = value.contact;
       this.education = value.education;
-      console.log(value);
     });
 
     // Add all the filters
@@ -135,6 +140,7 @@ export class AppComponent implements AfterViewInit {
         window.screen.availHeight + 'px';
       this.appContainerElement.nativeElement.style.backgroundSize =
         'auto ' + window.screen.availHeight + 'px';
+      this.filterIsExpanded = false;
     }
   }
 
@@ -144,5 +150,9 @@ export class AppComponent implements AfterViewInit {
 
   CheckFlag(item: FilterIconPair): boolean {
     return (FilterService.CurrentFilters & item.value) != 0;
+  }
+
+  FilterToolbarToggled (isExpanded: boolean) {
+      this.filterIsExpanded = isExpanded;
   }
 }
