@@ -1,91 +1,91 @@
-version: 2.1
-orbs:
-  browser-tools: circleci/browser-tools@1.4.0
-jobs:
-  # TODO: Add actual build step
-  Build:
-    working_directory: ~/resume-website
-    docker:
-        - image: cimg/node:16.13.2-browsers
-    steps:
-      - checkout
-  Test:
-    working_directory: ~/resume-website
-    docker:
-        - image: cimg/node:16.13.2-browsers
-    steps:
-        - browser-tools/install-chrome
-        - browser-tools/install-chromedriver      
-        - run:
-            name: Check browser install
-            command: |
-              google-chrome --version
-              chromedriver --version
-        # Checkout the code from the branch into the working_directory
-        - checkout
-        # Log the current branch
-        - run:
-            name: Show current branch
-            command: echo ${CIRCLE_BRANCH}
-        # Restore local dependencies from cache
-        - restore_cache:
-            keys:
-            - v1-dependencies-{{ checksum "package-lock.json" }}
-            - v1-dependencies-
-        # Install project dependencies
-        - run:
-            name: Install local dependencies
-            command: npm install
-        # Cache local dependencies if they don't exist
-        - save_cache:
-            key: v1-dependencies-{{ checksum "package-lock.json" }}
-            paths:
-                - node_modules
-        # Lint the source code
-        - run:
-            name: Linting
-            command: npm run lint
-        # Test the source code
-        - run:
-            name: Testing
-            command: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless
-        # End to End test
-        # - run:
-        #     name: End to End Test
-        #     command: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
-        # - run:
-        #     name: Build
-        #     command: |
-        #         npm run build
+# version: 2.1
+# orbs:
+#   browser-tools: circleci/browser-tools@1.4.0
+# jobs:
+#   # TODO: Add actual build step
+#   Build:
+#     working_directory: ~/resume-website
+#     docker:
+#         - image: cimg/node:16.13.2-browsers
+#     steps:
+#       - checkout
+#   Test:
+#     working_directory: ~/resume-website
+#     docker:
+#         - image: cimg/node:16.13.2-browsers
+#     steps:
+#         - browser-tools/install-chrome
+#         - browser-tools/install-chromedriver      
+#         - run:
+#             name: Check browser install
+#             command: |
+#               google-chrome --version
+#               chromedriver --version
+#         # Checkout the code from the branch into the working_directory
+#         - checkout
+#         # Log the current branch
+#         - run:
+#             name: Show current branch
+#             command: echo ${CIRCLE_BRANCH}
+#         # Restore local dependencies from cache
+#         - restore_cache:
+#             keys:
+#             - v1-dependencies-{{ checksum "package-lock.json" }}
+#             - v1-dependencies-
+#         # Install project dependencies
+#         - run:
+#             name: Install local dependencies
+#             command: npm install
+#         # Cache local dependencies if they don't exist
+#         - save_cache:
+#             key: v1-dependencies-{{ checksum "package-lock.json" }}
+#             paths:
+#                 - node_modules
+#         # Lint the source code
+#         - run:
+#             name: Linting
+#             command: npm run lint
+#         # Test the source code
+#         - run:
+#             name: Testing
+#             command: npm run test -- --no-watch --no-progress --browsers=ChromeHeadless
+#         # End to End test
+#         # - run:
+#         #     name: End to End Test
+#         #     command: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
+#         # - run:
+#         #     name: Build
+#         #     command: |
+#         #         npm run build
         
-  Deploy:
-    working_directory: ~/resume-website
-    machine:
-        image: ubuntu-2004:202010-01
-    steps:
-        - checkout
-        - run:
-            name: Deploy
-            command: |
-                sudo apt-get update
-                sudo apt-get -qq install git-ftp
-                git ftp push --user "${username}" --passwd "${password}" ${ftp_location}
-workflows:
-  master-deploy:
-    jobs:
-      - Build:
-          filters:
-            branches:
-              only: master
-      - Test:
-          requires:
-            - Build
-          filters:
-            branches:
-              only: master
-      - Deploy:
-          requires:
-            - Test
-          filters:
-            branches:
-              only: master
+#   Deploy:
+#     working_directory: ~/resume-website
+#     machine:
+#         image: ubuntu-2004:202010-01
+#     steps:
+#         - checkout
+#         - run:
+#             name: Deploy
+#             command: |
+#                 sudo apt-get update
+#                 sudo apt-get -qq install git-ftp
+#                 git ftp push --user "${username}" --passwd "${password}" ${ftp_location}
+# workflows:
+#   master-deploy:
+#     jobs:
+#       - Build:
+#           filters:
+#             branches:
+#               only: master
+#       - Test:
+#           requires:
+#             - Build
+#           filters:
+#             branches:
+#               only: master
+#       - Deploy:
+#           requires:
+#             - Test
+#           filters:
+#             branches:
+#               only: master
