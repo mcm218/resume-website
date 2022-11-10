@@ -71,10 +71,13 @@ export class HeaderComponent implements AfterViewInit {
       // Get the native element
       let headerNativeElement = this.headerElement.nativeElement;
 
+
+      console.log (this.headerElement.nativeElement.ViewChildren);
       // Store the initial header height
       // Adding 50 extra until I can find cause of issue where parts of header get off after scrolling
       this.headerValues.initialMobileValue =
-        document.querySelector<HTMLElement>('header')!.offsetHeight;
+        headerNativeElement.offsetHeight;
+        //document.querySelector<HTMLElement>('header')!.offsetHeight;
 
       this.headerValues.initialDesktopValue =
         document.querySelector<HTMLElement>('header')!.offsetHeight;
