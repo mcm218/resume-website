@@ -7,6 +7,7 @@ import {
   HostListener,
   ViewChildren,
   QueryList,
+  AfterViewChecked,
 } from '@angular/core';
 import { ContactMe } from '../models/contact-me';
 import { Education } from '../models/education';
@@ -17,7 +18,7 @@ import { OnScrollValuePair } from '../models/on-scroll-value-pair';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements AfterViewInit {
+export class HeaderComponent implements AfterViewChecked {
   headerValues: OnScrollValuePair<number> = new OnScrollValuePair(
     0,
     100,
@@ -63,19 +64,23 @@ export class HeaderComponent implements AfterViewInit {
 
   isInitialized: boolean = false;
 
+  counter: number = 0;
+
   constructor() {}
 
-  ngAfterViewInit() {
+  ngAfterViewChecked() {
+    // TODO: Probably due to something caused by app.component's styling, the header's initial values on mobile for PROD builds
+    // ONLY get messed up. Waited until after a few view checks to grab the initial heights
+    this.counter++;
+
     // Were the header and offset elements found?
-    if (this.headerElement && this.offsetElement) {
+    if (this.counter > 2 && this.isInitialized == false && this.headerElement && this.offsetElement) {
       // Get the native element
       let headerNativeElement = this.headerElement.nativeElement;
 
-      // Store the initial header height
-      // Adding 50 extra until I can find cause of issue where parts of header get off after scrolling
-      this.headerValues.initialMobileValue =
-        headerNativeElement.offsetHeight;
-        
+      this.headerValues.initialMobileValue = 
+      document.querySelector<HTMLElement>('header')!.offsetHeight;
+
       this.headerValues.initialDesktopValue =
         document.querySelector<HTMLElement>('header')!.offsetHeight;
 
@@ -92,7 +97,7 @@ export class HeaderComponent implements AfterViewInit {
 
       this.isInitialized = true;
 
-      console.log (this.headerValues.initialMobileValue)
+      console.log(this.headerValues.initialMobileValue);
     }
   }
 
