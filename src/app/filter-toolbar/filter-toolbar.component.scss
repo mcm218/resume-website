@@ -12,7 +12,7 @@
 
 #filter-toolbar-container {
     position: fixed;
-    z-index: 9999;
+    z-index: 1;
     top: 50%;
     transform: translate(0%, -50%);
     display: flex;

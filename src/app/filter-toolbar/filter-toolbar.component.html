@@ -12,7 +12,7 @@
           [ngClass]="CheckFlag(item) ? 'filterItem-selected' : 'filterItem'"
           *ngFor="let item of this.filterObjects"
           [matTooltip]="item.filterName"
-          matTooltipPosition="above"
+          matTooltipPosition="right"
         >
           <fa-icon
             *ngIf="item.isFA; else elseBlock"
