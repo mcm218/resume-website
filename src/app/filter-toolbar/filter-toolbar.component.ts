@@ -13,6 +13,7 @@ import {
 import {
   faChevronRight,
   faChevronLeft,
+  faSearch,
 } from '@fortawesome/free-solid-svg-icons';
 import { FilterIconPair, FilterService } from '../filter.service';
 import { FilterItem } from '../models/filter-item';
@@ -113,6 +114,36 @@ export class FilterToolbarComponent implements OnInit {
         'cplusplus'
       )
     );
+
+    this.filterObjects.push(
+      new FilterIconPair(
+        FilterItem.ElasticSearch,
+        'ElasticSearch',
+        this.noIcon,
+        false,
+        'elasticsearch'
+      )
+    )
+
+    this.filterObjects.push(
+      new FilterIconPair(
+        FilterItem.RabbitMQ,
+        'ReactNative',
+        this.noIcon,
+        false,
+        'reactnative'
+      )
+    )
+
+    this.filterObjects.push(
+      new FilterIconPair(
+        FilterItem.RabbitMQ,
+        'RabbitMQ',
+        this.noIcon,
+        false,
+        'rabbitmq'
+      )
+    )
   }
 
   ToggleFilterItem(filtereableItem: FilterIconPair) {
@@ -125,7 +156,7 @@ export class FilterToolbarComponent implements OnInit {
 
   ToggleExpanded() {
     this.isExpanded = !this.isExpanded;
-    
+
     // Are we on a desktop? If so, emit an expand event
     if (window.innerWidth >= 600) {
       this.expandedEvent.emit(this.isExpanded);

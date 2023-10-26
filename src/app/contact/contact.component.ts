@@ -9,12 +9,12 @@ import { ContactMe } from '../models/contact-me';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent {
-  faEnvolope = faEnvelope;
+  faEnvelope = faEnvelope;
   faLinkedIn = faLinkedin;
   faGithub = faGithub;
 
   @Input () contact: ContactMe = new ContactMe ();
-  
+
   constructor() { }
 
 

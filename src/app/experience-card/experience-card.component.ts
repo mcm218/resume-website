@@ -131,6 +131,45 @@ export class ExperienceCardComponent implements OnInit {
         )
       );
     }
+
+    // ElasticSearch
+    if ((this.item.filterableItems & FilterItem.ElasticSearch) != 0) {
+      this.filterObjects.push(
+        new FilterIconPair(
+          FilterItem.ElasticSearch,
+          'ElasticSearch',
+          this.noIcon,
+          false,
+          'elasticsearch'
+        )
+      );
+    }
+
+    // RabbitMQ
+    if ((this.item.filterableItems & FilterItem.RabbitMQ) != 0) {
+      this.filterObjects.push(
+        new FilterIconPair(
+          FilterItem.RabbitMQ,
+          'RabbitMQ',
+          this.noIcon,
+          false,
+          'rabbitmq'
+        )
+      );
+    }
+
+    // ReactNative
+    if ((this.item.filterableItems & FilterItem.ReactNative) != 0) {
+      this.filterObjects.push(
+        new FilterIconPair(
+          FilterItem.ReactNative,
+          'ReactNative',
+          this.noIcon,
+          false,
+          'reactnative'
+        )
+      );
+    }
   }
 
   ToggleFilterItem(filtereableItem: FilterIconPair) {

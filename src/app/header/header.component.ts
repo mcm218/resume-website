@@ -74,11 +74,11 @@ export class HeaderComponent implements AfterViewChecked {
     this.counter++;
 
     // Were the header and offset elements found?
-    if (this.counter > 2 && this.isInitialized == false && this.headerElement && this.offsetElement) {
+    if (this.counter > 2 && !this.isInitialized && this.headerElement && this.offsetElement) {
       // Get the native element
       let headerNativeElement = this.headerElement.nativeElement;
 
-      this.headerValues.initialMobileValue = 
+      this.headerValues.initialMobileValue =
       document.querySelector<HTMLElement>('header')!.offsetHeight;
 
       this.headerValues.initialDesktopValue =
@@ -93,7 +93,7 @@ export class HeaderComponent implements AfterViewChecked {
         this.UpdatePropertyOnScroll(PropertyType.color, this.colorValues);
 
       // Set the final scroll distance
-      this.finalScrollDistance = screen.availHeight * 1 * 0.75;
+      this.finalScrollDistance = screen.availHeight * 0.75;
 
       this.isInitialized = true;
 
@@ -103,7 +103,7 @@ export class HeaderComponent implements AfterViewChecked {
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event: any): boolean {
-    if (this.isInitialized == false) return false;
+    if (!this.isInitialized) return false;
 
     this.UpdateScrollValues();
 

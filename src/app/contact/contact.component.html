@@ -1,6 +1,6 @@
 <section class="contact-info">
   <a id="email" *ngIf="contact.email" [href]="'mailto:' + contact.email" alt=""
-    ><fa-icon class="icon" [icon]="faEnvolope" size="2x">Email me at {{ contact.email }}</fa-icon
+    ><fa-icon class="icon" [icon]="faEnvelope" size="2x">Email me at {{ contact.email }}</fa-icon
   ></a>
   <!-- <p *ngIf="contact.phone">{{ contact.phone | phonePipe }}</p> -->
   <a id="linkedin" *ngIf="contact.linkedin" [href]="contact.linkedin"
