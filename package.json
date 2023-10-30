@@ -4,11 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "prod": "ng build --watch --configuration production",
-    "build": "ng build",
+    "build": "ng build && fly deploy && bun run sentry:sourcemaps",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --code-coverage",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org personal-03r --project resume-website ./dist/resume-website && sentry-cli sourcemaps upload --org personal-03r --project resume-website ./dist/resume-website"
   },
   "private": true,
   "dependencies": {
@@ -28,6 +28,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.1.1",
     "@fortawesome/free-regular-svg-icons": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@sentry/angular-ivy": "^7.76.0",
     "karma-viewport": "^1.0.9",
     "moment": "^2.29.4",
     "rxjs": "~6.6.0",

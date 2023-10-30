@@ -14,11 +14,12 @@ export class ExperienceListComponent implements OnInit {
 
     constructor() {}
 
-    ngOnInit(): void {
+  ngOnInit(): void {
+    console.error("Sentry?");
         if (this.role.experience) {
             this.role.experience.sort((a, b) =>
                 moment(a.startDate).isBefore(b.startDate) ? 1 : -1
             );
         }
-    }
+  }
 }

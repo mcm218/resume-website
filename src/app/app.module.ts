@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import * as Sentry from '@sentry/angular-ivy';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,40 +20,58 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import {
-  provideAnalytics,
-  getAnalytics,
-  ScreenTrackingService,
-  UserTrackingService,
+    provideAnalytics,
+    getAnalytics,
+    ScreenTrackingService,
+    UserTrackingService,
 } from '@angular/fire/analytics';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { FilterToolbarComponent } from './filter-toolbar/filter-toolbar.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    ContactComponent,
-    SkillsListComponent,
-    ExperienceListComponent,
-    ExperienceCardComponent,
-    SkillCardComponent,
-    EducationCardComponent,
-    PhonePipePipe,
-    WipAlertComponent,
-    SvgRendererComponent,
-    FilterToolbarComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FontAwesomeModule,
-    BrowserAnimationsModule,
-    MatTooltipModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    // provideAnalytics(() => getAnalytics()),
-    provideFirestore(() => getFirestore()),
-  ],
-  providers: [ScreenTrackingService, UserTrackingService],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        ContactComponent,
+        SkillsListComponent,
+        ExperienceListComponent,
+        ExperienceCardComponent,
+        SkillCardComponent,
+        EducationCardComponent,
+        PhonePipePipe,
+        WipAlertComponent,
+        SvgRendererComponent,
+        FilterToolbarComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FontAwesomeModule,
+        BrowserAnimationsModule,
+        MatTooltipModule,
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        // provideAnalytics(() => getAnalytics()),
+        provideFirestore(() => getFirestore()),
+    ],
+    providers: [
+        {
+            provide: ErrorHandler,
+            useValue: Sentry.createErrorHandler({
+                showDialog: true,
+            }),
+        },
+        {
+            provide: Sentry.TraceService,
+        },
+        {
+            provide: APP_INITIALIZER,
+            useFactory: () => () => {},
+            deps: [Sentry.TraceService],
+            multi: true,
+        },
+        ScreenTrackingService,
+        UserTrackingService,
+    ],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -53,3 +53,5 @@ Thumbs.db
 .runtimeconfig.json
 
 /src/environments/*
+# Sentry Config File
+.sentryclirc
