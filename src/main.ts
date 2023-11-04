@@ -2,6 +2,7 @@ import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import * as Sentry from "@sentry/angular-ivy";
 import { AppModule } from './app/app.module';
+import packageJSON from "../package.json";
 
 // import { environment } from './environments/environment.js';
 
@@ -10,6 +11,7 @@ import { AppModule } from './app/app.module';
 // }
 
 Sentry.init({
+  release: "resume-website@" + packageJSON.version,
   dsn: "https://953f62f29e44de26fab8242656793fa5@o4506140418441216.ingest.sentry.io/4506140429516800",
   integrations: [
     new Sentry.BrowserTracing({
