@@ -9,17 +9,8 @@ import moment from 'moment';
     templateUrl: './experience-list.component.html',
     styleUrls: ['./experience-list.component.scss'],
 })
-export class ExperienceListComponent implements OnInit {
+export class ExperienceListComponent {
     @Input() role: Role = new Role();
 
     constructor() {}
-
-  ngOnInit(): void {
-    console.error("Sentry?");
-        if (this.role.experience) {
-            this.role.experience.sort((a, b) =>
-                moment(a.startDate).isBefore(b.startDate) ? 1 : -1
-            );
-        }
-  }
 }

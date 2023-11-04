@@ -26,6 +26,7 @@ import { Education } from './models/education';
 import { FilterItem } from './models/filter-item';
 import { Role } from './models/role';
 import { SkillBlock } from './models/skill-block';
+import moment from 'moment';
 
 @Component({
   selector: 'app-root',
@@ -57,6 +58,20 @@ export class AppComponent implements AfterViewInit {
     const docRef = doc(firestore, 'resumes/krtYPHqlrLLVzPVV9R69'); //collection(firestore, 'resumes');
     this.item$ = docData(docRef);
     this.item$.subscribe((value) => {
+      if (!value) {
+        return;
+      }
+
+      if (value.experience && value.experience.forEach) {
+        value.experience.forEach((role: Role) => {
+          role.experience = role.experience.sort((a, b) =>
+              moment(a.startDate).isBefore(b.startDate) ? 1 : -1
+          );
+        });
+      }
+
+      console.log(value);
+
       this.experienceList = value.experience;
       this.skillsLists = value.skills;
       this.contact = value.contact;
