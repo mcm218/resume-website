@@ -8,4 +8,5 @@ export class ExperienceItem {
   endDate: string = '';
   filterableItems: number = 0;
   notes: Array<string> = new Array<string>();
+  priority?: number;
 }

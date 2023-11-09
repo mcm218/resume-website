@@ -64,9 +64,11 @@ export class AppComponent implements AfterViewInit {
 
       if (value.experience && value.experience.forEach) {
         value.experience.forEach((role: Role) => {
-          role.experience = role.experience.sort((a, b) =>
-              moment(a.startDate).isBefore(b.startDate) ? 1 : -1
-          );
+          role.experience = role.experience.sort((a, b) => {
+            if (a.startDate) return moment(a.startDate).isBefore(b.startDate) ? 1 : -1
+            else if (a.priority) return a.priority > b.priority ? 1 : -1
+            else return 0
+          });
         });
       }
 
