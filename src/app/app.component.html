@@ -11,27 +11,6 @@
         [contact]="contact"
       ></app-header>
     </section>
-    <!--     
-    <section id="filter-section" style="align-self: center">
-      <div style="display: flex; align-items: center">
-        <span
-          class="filterItem"
-          (click)="this.ToggleFilterItem(item)"
-          [ngClass]="CheckFlag(item) ? 'filterItem-selected' : 'filterItem'"
-          *ngFor="let item of this.filterObjects"
-        >
-          <fa-icon
-            *ngIf="item.isFA; else elseBlock"
-            [icon]="item.faIcon"
-            size="2x"
-            >{{ item.filterName }}</fa-icon
-          >
-          <ng-template #elseBlock>
-            <app-svg-renderer [title]="item.iconURI"></app-svg-renderer>
-          </ng-template>
-        </span>
-      </div>
-    </section> -->
 
     <section *ngFor="let item of this.experienceList">
       <app-experience-list [role]="item"> </app-experience-list>

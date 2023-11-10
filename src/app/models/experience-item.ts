@@ -1,4 +1,4 @@
-import { FilterItem } from './filter-item';
+import { SafeHtml } from '@angular/platform-browser';
 
 export class ExperienceItem {
   role: string = '';
@@ -7,6 +7,6 @@ export class ExperienceItem {
   startDate: string = '';
   endDate: string = '';
   filterableItems: number = 0;
-  notes: Array<string> = new Array<string>();
+  notes: Array<string> | Array<SafeHtml> = new Array<string>();
   priority?: number;
 }
