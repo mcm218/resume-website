@@ -19,7 +19,6 @@
           (click)="this.ToggleFilterItem(item)"
           [ngClass]="CheckFlag(item) ? 'filterItem-selected' : 'filterItem'"
           *ngFor="let item of this.filterObjects"
-          [matTooltip]="item.filterName"
         >
           <fa-icon
             *ngIf="item.isFA; else elseBlock"

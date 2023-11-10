@@ -16,7 +16,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WipAlertComponent } from './wip-alert/wip-alert.component';
 import { SvgRendererComponent } from './svg-renderer/svg-renderer.component';
-import { MatLegacyTooltipModule as MatTooltipModule } from '@angular/material/legacy-tooltip';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import {
@@ -48,7 +47,6 @@ import { FilterToolbarComponent } from './filter-toolbar/filter-toolbar.componen
         AppRoutingModule,
         FontAwesomeModule,
         BrowserAnimationsModule,
-        MatTooltipModule,
         provideFirebaseApp(() => initializeApp(environment.firebase)),
         // provideAnalytics(() => getAnalytics()),
         provideFirestore(() => getFirestore()),
